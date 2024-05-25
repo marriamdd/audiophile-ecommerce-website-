@@ -4,7 +4,9 @@ import styled from "styled-components";
 export default function Footer() {
   return (
     <FooterStyled>
-      <h2>audiopjile</h2>
+      <Link to={"/"}>
+        <img src="/assets/shared/desktop/logo.svg" />
+      </Link>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/HeadPhones">HeadPhones</Link>

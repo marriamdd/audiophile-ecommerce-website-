@@ -35,12 +35,14 @@ function Header() {
         <img
           className="menuButton"
           onClick={() => setMenuButton(!menuButton)}
-          src="assets/product-zx9-speaker/mobile/Group (1).svg"
+          src="/assets/shared/tablet/icon-hamburger.svg"
           alt="Navigation Menu"
         />
         <h2>
           {" "}
-          <Link to={"/"}>audioPhile</Link>
+          <Link to={"/"}>
+            <img src="/assets/shared/desktop/logo.svg" />
+          </Link>
         </h2>
         <nav>
           <Link to="/">Home</Link>

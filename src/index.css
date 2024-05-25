@@ -8,7 +8,11 @@
 
 button {
   font-family: "Manrope", sans-serif;
+  cursor: pointer;
 }
 html {
   font-size: 62.5%;
+}
+a {
+  cursor: pointer;
 }

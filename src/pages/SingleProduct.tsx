@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Audiophile_Context } from "../App";
 import styled from "styled-components";
 import AddToCartButtons from "../components/AddToCartButtons";
-import SeeProductComponent from "../components/SeeProductComponent";
 
 function SingleProduct() {
   const { name } = useParams();
@@ -36,7 +35,7 @@ function SingleProduct() {
         <h2>IN THE BOX</h2>
 
         {singleProductData?.includes.map((item) => (
-          <div>
+          <div key={Math.random()}>
             <span>{`${item.quantity}x`}</span> <p>{item.item}</p>
           </div>
         ))}
@@ -63,16 +62,12 @@ function SingleProduct() {
         {" "}
         <h2>YOU MAY ALSO LIKE</h2>
         {singleProductData?.others.map((item) => (
-          <div className="mayAlsoLikeItem">
+          <div key={Math.random()} className="mayAlsoLikeItem">
             <div className="imgDiv">
               <img src={item.image.mobile} alt="" />
             </div>
             <h2>{item.name}</h2>
-
-            <SeeProductComponent
-              to={`/single/${item.name}`}
-              backGround={"#D87D4A"}
-            />
+            <button>See Product</button>
           </div>
         ))}
       </div>
@@ -186,6 +181,7 @@ const SingleProductContainer = styled.div`
       line-height: 36px;
       letter-spacing: 0.857px;
       text-transform: uppercase;
+      margin-bottom: 4rem;
     }
     .mayAlsoLikeItem {
       display: flex;
@@ -197,7 +193,7 @@ const SingleProductContainer = styled.div`
     .imgDiv {
       margin-block: 2rem;
       width: 327px;
-      height: 120px;
+      height: 130px;
       border-radius: 8px;
       background: #f1f1f1;
       display: flex;
@@ -205,9 +201,20 @@ const SingleProductContainer = styled.div`
       justify-content: center;
 
       img {
-        width: 190px;
         height: 110px;
       }
+    }
+    button {
+      width: 160px;
+      height: 48px;
+      color: #fff;
+      background: #d87d4a;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
     }
   }
 `;

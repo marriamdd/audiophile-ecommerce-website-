@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Data from "./data.json";
 import { createContext, useState } from "react";
 import { IProduct } from "./types/Types";
+import Footer from "./components/Footer";
 
 export const Audiophile_Context = createContext<{
   data: IProduct[];
@@ -38,6 +39,7 @@ function App() {
             <Route path="/Speakers" element={<Speakers />} />
             <Route path={"/single/:name"} element={<SingleProduct />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </Audiophile_Context.Provider>
     </>

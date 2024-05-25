@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import MobileCategoriesComponent from "./MobileCategoriesComponent";
+
 import { useContext, useEffect, useState } from "react";
 import { Audiophile_Context } from "../App";
+import CategoriesContainerComponent from "./CategoriesContainerComponent";
 function Header() {
   const { menuButton, setMenuButton } = useContext(Audiophile_Context);
 
@@ -66,32 +67,11 @@ function Header() {
               right: 0,
               bottom: 0,
               left: 0,
+              zIndex: 100,
             }}
           ></div>
           <div onClick={() => setMenuButton(false)}>
-            <CategoriesContainer>
-              <MobileCategoriesComponent
-                title={"HeadPhones"}
-                link={"/HeadPhones"}
-                img={"assets/menu_Imgs/headPhoneMenu.png"}
-                height={"104px"}
-                width={"79.916px"}
-              />
-              <MobileCategoriesComponent
-                title={"Speakers"}
-                link={"/Speakers"}
-                img={"assets/menu_Imgs/audiophile-ecommerce-website.png"}
-                height={"101px"}
-                width={"84.044px"}
-              />
-              <MobileCategoriesComponent
-                title={"EarPhones"}
-                link={"/EarPhones"}
-                img={"assets/menu_Imgs/speakers_menu.png"}
-                height={"133px"}
-                width={"147px"}
-              />
-            </CategoriesContainer>
+            <CategoriesContainerComponent position={"absolute"} zindex={200} />
           </div>
         </>
       )}
@@ -171,31 +151,5 @@ const StyledHeader = styled.header`
     height: 1px;
     opacity: 0.104;
     background: #fff;
-  }
-`;
-
-const CategoriesContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  padding-top: 8rem;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  align-items: center;
-  gap: 6.8rem;
-  background-color: white;
-  transition: gap 1s ease;
-  padding-bottom: 5rem;
-  @media screen and (min-width: 768px) {
-    gap: 4.5rem;
-    height: 34rem;
-    flex-direction: row;
-    padding-top: 0rem;
-    justify-content: center;
-    transition: justify-content 1s ease, gap 1s ease;
-  }
-  @media screen and (min-width: 900px) {
-    gap: 8rem;
-    transition: gap 1s ease;
   }
 `;

@@ -2,7 +2,21 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import GoBackButton from "../components/GoBackButton";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
+const schema = yup.object({
+  name: yup.string().required("is required"),
+  emailAddress: yup.string().required("is required"),
+  phoneNumber: yup.string().required("is required"),
+  yourAddress: yup.string().required("is required"),
+  zipCode: yup.string().required("is required"),
+  city: yup.string().required("is required"),
+  country: yup.string().required("is required"),
+  paymentMethod: yup.string().required("is required"),
+  E_Money_Number: yup.string().required("is required"),
+  E_Money_Pin: yup.string().required("is required"),
+});
 interface InputTypes {
   name: string;
   emailAddress: string;
@@ -16,14 +30,20 @@ interface InputTypes {
   E_Money_Pin: string;
 }
 export default function Checkout() {
-  const { register, handleSubmit } = useForm<InputTypes>();
-  // const [formValues, setFormValues] = useState<InputTypes[]>([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<InputTypes>({
+    resolver: yupResolver(schema),
+  });
+
   const [e_moneyGraph, setE_moneyGraph] = useState(false);
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
-    // setFormValues([data]);
     console.log(data);
   };
-  // console.log(formValues[0].paymentMethod);
+  console.log(errors);
+
   return (
     <CheckoutPage>
       <div>
@@ -37,11 +57,19 @@ export default function Checkout() {
           <h2>Billing details</h2>
 
           <InputContainer>
-            <label htmlFor="name">Name</label>
+            <div>
+              <label htmlFor="name">Name</label>
+              {errors.name && <p>{errors.name.message}</p>}
+            </div>
+
             <input placeholder="Alexei Ward" id="name" {...register("name")} />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="emailAddress">Email Address</label>
+            <div>
+              <label htmlFor="emailAddress">Email Address</label>
+              {errors.emailAddress && <p>{errors.emailAddress.message}</p>}
+            </div>
+
             <input
               placeholder="alexei@mail.com"
               id="emailAddress"
@@ -49,7 +77,11 @@ export default function Checkout() {
             />
           </InputContainer>
           <InputContainer>
-            <label htmlFor="phoneNumber">Phone Number</label>
+            <div>
+              <label htmlFor="phoneNumber">Phone Number</label>
+              {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+            </div>
+
             <input
               placeholder="+1 202-555-0136"
               id="phoneNumber"
@@ -61,7 +93,11 @@ export default function Checkout() {
           <h2>shipping info</h2>
 
           <InputContainer>
-            <label htmlFor="yourAddress">Your Address</label>
+            <div>
+              <label htmlFor="yourAddress">Your Address</label>
+              {errors.yourAddress && <p>{errors.yourAddress.message}</p>}
+            </div>
+
             <input
               placeholder="1137 Williams Avenue"
               id="yourAddress"
@@ -70,17 +106,29 @@ export default function Checkout() {
           </InputContainer>
 
           <InputContainer>
-            <label htmlFor="zipCode">ZIP Code</label>
+            <div>
+              <label htmlFor="zipCode">ZIP Code</label>
+              {errors.zipCode && <p>{errors.zipCode.message}</p>}
+            </div>
+
             <input placeholder="10001" id="zipCode" {...register("zipCode")} />
           </InputContainer>
 
           <InputContainer>
-            <label htmlFor="city">City</label>
+            <div>
+              <label htmlFor="city">City</label>
+              {errors.city && <p>{errors.city.message}</p>}
+            </div>
+
             <input placeholder="New York" id="city" {...register("city")} />
           </InputContainer>
 
           <InputContainer>
-            <label htmlFor="country">Country</label>
+            <div>
+              <label htmlFor="country">Country</label>
+              {errors.country && <p>{errors.country.message}</p>}
+            </div>
+
             <input
               placeholder="United States"
               id="country"
@@ -98,6 +146,7 @@ export default function Checkout() {
               value="e_Money"
               {...register("paymentMethod")}
             />
+
             <label htmlFor="e_Money">E-Money </label>
           </CheckBoxContainer>
           <CheckBoxContainer onClick={() => setE_moneyGraph(false)}>
@@ -112,7 +161,13 @@ export default function Checkout() {
           {e_moneyGraph == true && (
             <Section>
               <InputContainer>
-                <label htmlFor="e_Money_number">e-Money Number</label>
+                <div>
+                  <label htmlFor="e_Money_number">e-Money Number</label>
+                  {errors.E_Money_Number && (
+                    <p>{errors.E_Money_Number.message}</p>
+                  )}
+                </div>
+
                 <input
                   placeholder="238521993"
                   id="e_Money_number"
@@ -120,7 +175,11 @@ export default function Checkout() {
                 />
               </InputContainer>
               <InputContainer>
-                <label htmlFor="e_Money_Pin">e-Money PIN</label>
+                <div>
+                  <label htmlFor="e_Money_Pin">e-Money PIN</label>
+                  {errors.E_Money_Pin && <p>{errors.E_Money_Pin.message}</p>}
+                </div>
+
                 <input
                   placeholder="6891"
                   id="e_Money_Pin"
@@ -197,7 +256,7 @@ const Form = styled.form`
   flex-direction: column;
   align-items: center;
   width: 327px;
-  height: 1378px;
+  margin-bottom: 3rem;
   border-radius: 8px;
   background: #fff;
   h1 {
@@ -214,7 +273,17 @@ const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
+  & > div {
+    display: flex;
+    justify-content: space-between;
+    p {
+      color: #cd2c2c;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.214px;
+    }
+  }
   label {
     cursor: pointer;
     color: #000;

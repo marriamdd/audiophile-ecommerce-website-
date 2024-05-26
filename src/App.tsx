@@ -15,20 +15,32 @@ export const Audiophile_Context = createContext<{
   setData: React.Dispatch<React.SetStateAction<IProduct[]>>;
   menuButton: boolean;
   setMenuButton: React.Dispatch<React.SetStateAction<boolean>>;
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
 }>({
   data: [],
   setData: () => {},
   menuButton: false,
   setMenuButton: () => {},
+  category: "",
+  setCategory: () => {},
 });
 function App() {
   const [data, setData] = useState<IProduct[]>(Data);
   const [menuButton, setMenuButton] = useState(false);
+  const [category, setCategory] = useState("");
 
   return (
     <>
       <Audiophile_Context.Provider
-        value={{ data, setData, menuButton, setMenuButton }}
+        value={{
+          data,
+          setData,
+          menuButton,
+          setMenuButton,
+          category,
+          setCategory,
+        }}
       >
         <BrowserRouter>
           <Header />

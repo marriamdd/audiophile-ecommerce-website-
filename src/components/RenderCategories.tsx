@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Audiophile_Context } from "../App";
 import SeeProductComponent from "./SeeProductComponent";
 import styled from "styled-components";
@@ -6,6 +6,10 @@ import styled from "styled-components";
 const RenderCategories = ({ category }: { category: string }) => {
   const { data } = useContext(Audiophile_Context);
   const reversedData = [...data].reverse();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    console.log("sheicvala");
+  }, [category]);
   return (
     <CategoryContainer>
       <div className="categoryTitle">
@@ -32,6 +36,7 @@ const RenderCategories = ({ category }: { category: string }) => {
 export default RenderCategories;
 
 const CategoryContainer = styled.div`
+  scroll-behavior: smooth;
   /* padding-top: 6.4rem; */
   display: flex;
   flex-direction: column;

@@ -5,7 +5,8 @@ import { useContext, useEffect, useState } from "react";
 import { Audiophile_Context } from "../App";
 import CategoriesContainerComponent from "./CategoriesContainerComponent";
 function Header() {
-  const { menuButton, setMenuButton } = useContext(Audiophile_Context);
+  const { menuButton, setMenuButton, setShowCart } =
+    useContext(Audiophile_Context);
 
   const UseDesktopFunc = () => {
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1440);
@@ -51,6 +52,7 @@ function Header() {
           <Link to="/EarPhones">EarPhones</Link>
         </nav>
         <img
+          onClick={() => setShowCart((prev) => !prev)}
           className="cart_icon"
           src="/assets/shared/desktop/icon-cart.svg"
           alt="cart_icon"

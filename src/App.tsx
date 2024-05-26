@@ -11,6 +11,13 @@ import { IProduct } from "./types/Types";
 import Footer from "./components/Footer";
 import Checkout from "./pages/Checkout";
 
+type CartItem = {
+  id: number;
+  name: string;
+  price: number;
+  quantity: number;
+  img: string;
+};
 export const Audiophile_Context = createContext<{
   data: IProduct[];
   setData: React.Dispatch<React.SetStateAction<IProduct[]>>;
@@ -20,6 +27,10 @@ export const Audiophile_Context = createContext<{
   setCategory: React.Dispatch<React.SetStateAction<string>>;
   thanksComponent: boolean;
   setThanksComponent: React.Dispatch<React.SetStateAction<boolean>>;
+  cartItems: CartItem[];
+  setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
+  showCart: boolean;
+  setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
   data: [],
   setData: () => {},
@@ -29,16 +40,25 @@ export const Audiophile_Context = createContext<{
   setCategory: () => {},
   thanksComponent: false,
   setThanksComponent: () => {},
+  cartItems: [],
+  setCartItems: () => {},
+  showCart: false,
+  setShowCart: () => {},
 });
 function App() {
   const [data, setData] = useState<IProduct[]>(Data);
   const [menuButton, setMenuButton] = useState(false);
   const [category, setCategory] = useState("");
   const [thanksComponent, setThanksComponent] = useState(false);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [showCart, setShowCart] = useState(false);
+  console.log(cartItems);
   return (
     <>
       <Audiophile_Context.Provider
         value={{
+          cartItems,
+          setCartItems,
           thanksComponent,
           setThanksComponent,
           data,
@@ -47,6 +67,8 @@ function App() {
           setMenuButton,
           category,
           setCategory,
+          showCart,
+          setShowCart,
         }}
       >
         <BrowserRouter>

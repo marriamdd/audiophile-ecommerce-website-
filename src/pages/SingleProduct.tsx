@@ -4,12 +4,13 @@ import { Audiophile_Context } from "../App";
 import styled from "styled-components";
 import AddToCartButtons from "../components/AddToCartButtons";
 import GoBackButton from "../components/GoBackButton";
+import CartContent from "../components/CartContent";
 
 function SingleProduct() {
   const { name } = useParams();
-  const { data } = useContext(Audiophile_Context);
+  const { data, showCart } = useContext(Audiophile_Context);
   const singleProductData = data.find((item) => item.name == name);
-  // const navigate = useNavigate();
+
   console.log(singleProductData);
   let formatedPrice = "";
   if (singleProductData?.price) {
@@ -18,6 +19,7 @@ function SingleProduct() {
 
   return (
     <SingleProductContainer>
+      {showCart && <CartContent />}
       <GoBackButton />
       <img src={singleProductData?.image.mobile} alt="" />
       {singleProductData?.new ? (
@@ -26,7 +28,7 @@ function SingleProduct() {
       <h2>{singleProductData?.name}</h2>
       <p>{singleProductData?.description}</p>
       <h3 className="price">{formatedPrice}</h3>
-      <AddToCartButtons />
+      <AddToCartButtons singleProductData={singleProductData} />
       <h2 className="featureTitle">FEATURES</h2>
       <p>{singleProductData?.features}</p>
 
@@ -81,11 +83,10 @@ const SingleProductContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 327px;
-  margin-inline: 2.5rem;
-  margin-block: 2rem;
-  gap: 2.4rem;
 
+  padding: 2rem 2.5rem;
+  gap: 2.4rem;
+  position: relative;
   .newPRoduct {
     align-self: flex-start;
     color: #d87d4a;

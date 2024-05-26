@@ -1,18 +1,54 @@
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import { Audiophile_Context } from "../App";
+import { IProduct } from "../types/Types";
+const AddToCartButtons = ({
+  singleProductData,
+}: {
+  singleProductData: IProduct | undefined;
+}) => {
+  const { setCartItems } = useContext(Audiophile_Context);
+  const [quantity, setQuantity] = useState(1);
+  const handleAddToCart = () => {
+    if (singleProductData) {
+      setCartItems((prev) => [
+        ...prev,
+        {
+          id: singleProductData.id,
+          name: singleProductData.name,
+          price: singleProductData.price,
+          quantity: quantity,
+          img: singleProductData.image.mobile,
+        },
+      ]);
+    }
+  };
 
-function AddToCartButtons() {
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
+  const handleIncreaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
   return (
     <AddToCartButtonsStyle>
       <div>
-        <span className="minus">-</span>
-        <input defaultValue={1} />
-        <span className="plus">+</span>
+        <span onClick={handleDecreaseQuantity} className="minus">
+          -
+        </span>
+        <input value={quantity} />
+        <span onClick={handleIncreaseQuantity} className="plus">
+          +
+        </span>
       </div>
 
-      <button>ADD TO CART</button>
+      <button onClick={handleAddToCart}>ADD TO CART</button>
     </AddToCartButtonsStyle>
   );
-}
+};
 
 export default AddToCartButtons;
 

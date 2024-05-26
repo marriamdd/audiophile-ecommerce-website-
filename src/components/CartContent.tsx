@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Audiophile_Context } from "../App";
 import styled from "styled-components";
+import EmptyCart from "./EmptyCart";
 
 export default function CartContent() {
-  const { cartItems } = useContext(Audiophile_Context);
+  const { cartItems, setShowCart } = useContext(Audiophile_Context);
   let formattedPrice = "";
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const format = cartItems.map((item) => {
@@ -14,28 +15,32 @@ export default function CartContent() {
 
   return (
     <>
-      <BlurDiv></BlurDiv>
-      <CartIContainer>
-        <div className="cartHeader">
-          <h2>Cart ({cartItems.length})</h2>
-          <span>Remove all</span>
-        </div>
-
-        {cartItems.map((item) => (
-          <div key={Math.random() * Math.random()} className="cartItem">
-            <img src={item.img} alt="" />
-            <div className="price_name_div">
-              <h3>{item.name}</h3>
-              <span>{formattedPrice}</span>
-            </div>
-            <div className="countContainer">
-              <span className="minus">-</span>
-              <input readOnly value={item.quantity} />
-              <span className="plus">+</span>
-            </div>
+      <BlurDiv onClick={() => setShowCart(false)}></BlurDiv>
+      {cartItems.length == 0 ? (
+        <EmptyCart />
+      ) : (
+        <CartIContainer>
+          <div className="cartHeader">
+            <h2>Cart ({cartItems.length})</h2>
+            <span>Remove all</span>
           </div>
-        ))}
-      </CartIContainer>
+
+          {cartItems.map((item) => (
+            <div key={Math.random() * Math.random()} className="cartItem">
+              <img src={item.img} alt="" />
+              <div className="price_name_div">
+                <h3>{item.name}</h3>
+                <span>{formattedPrice}</span>
+              </div>
+              <div className="countContainer">
+                <span className="minus">-</span>
+                <input readOnly value={item.quantity} />
+                <span className="plus">+</span>
+              </div>
+            </div>
+          ))}
+        </CartIContainer>
+      )}
     </>
   );
 }

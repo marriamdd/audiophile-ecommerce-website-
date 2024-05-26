@@ -53,6 +53,7 @@ function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
   console.log(cartItems);
+
   return (
     <>
       <Audiophile_Context.Provider

@@ -2,9 +2,10 @@ import { useContext, useEffect } from "react";
 import { Audiophile_Context } from "../App";
 import SeeProductComponent from "./SeeProductComponent";
 import styled from "styled-components";
+import CartContent from "./CartContent";
 
 const RenderCategories = ({ category }: { category: string }) => {
-  const { data } = useContext(Audiophile_Context);
+  const { data, showCart } = useContext(Audiophile_Context);
   const reversedData = [...data].reverse();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -12,6 +13,7 @@ const RenderCategories = ({ category }: { category: string }) => {
   }, [category]);
   return (
     <CategoryContainer>
+      {showCart && <CartContent />}
       <div className="categoryTitle">
         <h2>{category}</h2>
       </div>
@@ -37,6 +39,8 @@ export default RenderCategories;
 
 const CategoryContainer = styled.div`
   /* padding-top: 6.4rem; */
+  position: relative;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;

@@ -6,16 +6,29 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const schema = yup.object({
-  name: yup.string().required("is required"),
+  name: yup
+    .string()
+    .required("is required")
+    .min(5, "must be at least 5 characters long ")
+    .test("includes space", "Please enter a first and last name", (value) => {
+      return value?.includes(" ");
+    }),
   emailAddress: yup.string().required("is required"),
   phoneNumber: yup.string().required("is required"),
   yourAddress: yup.string().required("is required"),
-  zipCode: yup.string().required("is required"),
+  zipCode: yup
+    .string()
+    .required("is required")
+    .min(5, "must be at least 5 characters long "),
+
   city: yup.string().required("is required"),
   country: yup.string().required("is required"),
   paymentMethod: yup.string().required("is required"),
   E_Money_Number: yup.string().required("is required"),
-  E_Money_Pin: yup.string().required("is required"),
+  E_Money_Pin: yup
+    .string()
+    .min(4, "must be at least 4 characters long ")
+    .required("is required"),
 });
 interface InputTypes {
   name: string;
@@ -56,7 +69,7 @@ export default function Checkout() {
         <Section>
           <h2>Billing details</h2>
 
-          <InputContainer>
+          <InputContainer error={errors.name ? errors.name.message : ""}>
             <div>
               <label htmlFor="name">Name</label>
               {errors.name && <p>{errors.name.message}</p>}
@@ -64,7 +77,9 @@ export default function Checkout() {
 
             <input placeholder="Alexei Ward" id="name" {...register("name")} />
           </InputContainer>
-          <InputContainer>
+          <InputContainer
+            error={errors.emailAddress ? errors.emailAddress.message : ""}
+          >
             <div>
               <label htmlFor="emailAddress">Email Address</label>
               {errors.emailAddress && <p>{errors.emailAddress.message}</p>}
@@ -76,7 +91,9 @@ export default function Checkout() {
               {...register("emailAddress")}
             />
           </InputContainer>
-          <InputContainer>
+          <InputContainer
+            error={errors.phoneNumber ? errors.phoneNumber.message : ""}
+          >
             <div>
               <label htmlFor="phoneNumber">Phone Number</label>
               {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
@@ -92,7 +109,9 @@ export default function Checkout() {
         <Section>
           <h2>shipping info</h2>
 
-          <InputContainer>
+          <InputContainer
+            error={errors.yourAddress ? errors.yourAddress.message : ""}
+          >
             <div>
               <label htmlFor="yourAddress">Your Address</label>
               {errors.yourAddress && <p>{errors.yourAddress.message}</p>}
@@ -105,7 +124,7 @@ export default function Checkout() {
             />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer error={errors.zipCode ? errors.zipCode.message : ""}>
             <div>
               <label htmlFor="zipCode">ZIP Code</label>
               {errors.zipCode && <p>{errors.zipCode.message}</p>}
@@ -114,7 +133,7 @@ export default function Checkout() {
             <input placeholder="10001" id="zipCode" {...register("zipCode")} />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer error={errors.city ? errors.city.message : ""}>
             <div>
               <label htmlFor="city">City</label>
               {errors.city && <p>{errors.city.message}</p>}
@@ -123,7 +142,7 @@ export default function Checkout() {
             <input placeholder="New York" id="city" {...register("city")} />
           </InputContainer>
 
-          <InputContainer>
+          <InputContainer error={errors.country ? errors.country.message : ""}>
             <div>
               <label htmlFor="country">Country</label>
               {errors.country && <p>{errors.country.message}</p>}
@@ -138,7 +157,11 @@ export default function Checkout() {
         </Section>
         <Section>
           <h2>payment details</h2>
-          <label>Payment Method</label>
+          <div className="paymentErrorDiv">
+            <label>Payment Method</label>
+            {errors.paymentMethod && <p>{errors.paymentMethod.message}</p>}
+          </div>
+
           <CheckBoxContainer onClick={() => setE_moneyGraph(true)}>
             <input
               id="e_Money"
@@ -160,7 +183,11 @@ export default function Checkout() {
           </CheckBoxContainer>
           {e_moneyGraph == true && (
             <Section>
-              <InputContainer>
+              <InputContainer
+                error={
+                  errors.E_Money_Number ? errors.E_Money_Number.message : ""
+                }
+              >
                 <div>
                   <label htmlFor="e_Money_number">e-Money Number</label>
                   {errors.E_Money_Number && (
@@ -174,7 +201,9 @@ export default function Checkout() {
                   {...register("E_Money_Number")}
                 />
               </InputContainer>
-              <InputContainer>
+              <InputContainer
+                error={errors.E_Money_Pin ? errors.E_Money_Pin.message : ""}
+              >
                 <div>
                   <label htmlFor="e_Money_Pin">e-Money PIN</label>
                   {errors.E_Money_Pin && <p>{errors.E_Money_Pin.message}</p>}
@@ -269,7 +298,7 @@ const Form = styled.form`
   }
 `;
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ error?: string }>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -286,7 +315,7 @@ const InputContainer = styled.div`
   }
   label {
     cursor: pointer;
-    color: #000;
+    color: ${(props) => (props.error ? "red" : "#000")};
     font-family: Manrope;
     font-size: 12px;
     font-style: normal;
@@ -298,7 +327,8 @@ const InputContainer = styled.div`
     width: 280px;
     height: 56px;
     border-radius: 8px;
-    border: 1px solid #cfcfcf;
+    border: 1px solid ${(props) => (props.error ? "red" : "#cfcfcf")};
+
     background: #fff;
     padding-left: 2rem;
 
@@ -313,6 +343,27 @@ const Section = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  .paymentErrorDiv {
+    display: flex;
+    justify-content: space-between;
+    label {
+      cursor: pointer;
+      color: #000;
+      font-family: Manrope;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.214px;
+    }
+    p {
+      color: #cd2c2c;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.214px;
+    }
+  }
   h2 {
     margin-top: 3rem;
     color: #d87d4a;

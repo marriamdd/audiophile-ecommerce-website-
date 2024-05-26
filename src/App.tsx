@@ -18,6 +18,8 @@ export const Audiophile_Context = createContext<{
   setMenuButton: React.Dispatch<React.SetStateAction<boolean>>;
   category: string;
   setCategory: React.Dispatch<React.SetStateAction<string>>;
+  thanksComponent: boolean;
+  setThanksComponent: React.Dispatch<React.SetStateAction<boolean>>;
 }>({
   data: [],
   setData: () => {},
@@ -25,16 +27,20 @@ export const Audiophile_Context = createContext<{
   setMenuButton: () => {},
   category: "",
   setCategory: () => {},
+  thanksComponent: false,
+  setThanksComponent: () => {},
 });
 function App() {
   const [data, setData] = useState<IProduct[]>(Data);
   const [menuButton, setMenuButton] = useState(false);
   const [category, setCategory] = useState("");
-
+  const [thanksComponent, setThanksComponent] = useState(false);
   return (
     <>
       <Audiophile_Context.Provider
         value={{
+          thanksComponent,
+          setThanksComponent,
           data,
           setData,
           menuButton,

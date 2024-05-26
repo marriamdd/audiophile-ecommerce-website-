@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import GoBackButton from "../components/GoBackButton";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import InputMask from "react-input-mask";
+import { Audiophile_Context } from "../App";
+import ThanksComponent from "../components/ThanksComponent";
+
 const schema = yup.object({
   name: yup
     .string()
@@ -30,11 +33,11 @@ const schema = yup.object({
   city: yup.string().required("is required"),
   country: yup.string().required("is required"),
   paymentMethod: yup.string().required("is required"),
-  E_Money_Number: yup.string().required("is required"),
-  E_Money_Pin: yup
-    .string()
-    .min(4, "must be at least 4 characters long ")
-    .required("is required"),
+  E_Money_Number: yup.string(),
+  // . required("is required"),
+  E_Money_Pin: yup.string(),
+  // .min(4, "must be at least 4 characters long ")
+  // .required("is required"),
 });
 interface InputTypes {
   name: string;
@@ -45,8 +48,8 @@ interface InputTypes {
   city: string;
   country: string;
   paymentMethod: string;
-  E_Money_Number: string;
-  E_Money_Pin: string;
+  E_Money_Number?: string;
+  E_Money_Pin?: string;
 }
 export default function Checkout() {
   const {
@@ -56,10 +59,11 @@ export default function Checkout() {
   } = useForm<InputTypes>({
     resolver: yupResolver(schema),
   });
-
+  const { setThanksComponent } = useContext(Audiophile_Context);
   const [e_moneyGraph, setE_moneyGraph] = useState(false);
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
     console.log(data);
+    setThanksComponent(true);
   };
   console.log(errors);
 
@@ -189,7 +193,7 @@ export default function Checkout() {
             />
             <label htmlFor="cash">Cash on Delivery </label>
           </CheckBoxContainer>
-          {e_moneyGraph == true && (
+          {e_moneyGraph == true ? (
             <Section>
               <InputContainer
                 error={
@@ -224,20 +228,22 @@ export default function Checkout() {
                 />
               </InputContainer>
             </Section>
-          )}
+          ) : null}
         </Section>
         <Continue_pay type="submit" value={"CONTINUE & PAY"} />
       </Form>
+      <ThanksComponent />
     </CheckoutPage>
   );
 }
 const CheckoutPage = styled.div`
+  position: relative;
   background: #fafafa;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  padding-top: 2rem;
   & > div {
     align-self: flex-start;
     padding-left: 4rem;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import GoBackButton from "../components/GoBackButton";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
+import InputMask from "react-input-mask";
 const schema = yup.object({
   name: yup
     .string()
@@ -99,11 +99,17 @@ export default function Checkout() {
               {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
             </div>
 
-            <input
+            <InputMask
+              {...register("phoneNumber")}
+              id="phoneNumber"
+              mask="+1 999-999-9999"
+              placeholder="+1 202-555-0136"
+            />
+            {/* <input
               placeholder="+1 202-555-0136"
               id="phoneNumber"
               {...register("phoneNumber")}
-            />
+            /> */}
           </InputContainer>
         </Section>
         <Section>

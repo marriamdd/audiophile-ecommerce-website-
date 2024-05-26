@@ -9,6 +9,7 @@ import Data from "./data.json";
 import { createContext, useState } from "react";
 import { IProduct } from "./types/Types";
 import Footer from "./components/Footer";
+import Checkout from "./pages/Checkout";
 
 export const Audiophile_Context = createContext<{
   data: IProduct[];
@@ -50,6 +51,7 @@ function App() {
             <Route path="/HeadPhones" element={<HeadPhones />} />
             <Route path="/Speakers" element={<Speakers />} />
             <Route path={"/single/:name"} element={<SingleProduct />} />
+            <Route path="/Checkout" element={<Checkout />} />
           </Routes>
           <Footer />
         </BrowserRouter>

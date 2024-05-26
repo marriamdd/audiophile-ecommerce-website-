@@ -6,14 +6,14 @@ import GoBackButton from "../components/GoBackButton";
 interface InputTypes {
   name: string;
   emailAddress: string;
-  phoneNumber: number;
+  phoneNumber: string;
   yourAddress: string;
-  zipCode: number;
+  zipCode: string;
   city: string;
   country: string;
   paymentMethod: string;
-  E_Money_Number: number;
-  E_Money_Pin: number;
+  E_Money_Number: string;
+  E_Money_Pin: string;
 }
 export default function Checkout() {
   const { register, handleSubmit } = useForm<InputTypes>();

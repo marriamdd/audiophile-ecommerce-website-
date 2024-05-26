@@ -13,8 +13,14 @@ const schema = yup.object({
     .test("includes space", "Please enter a first and last name", (value) => {
       return value?.includes(" ");
     }),
-  emailAddress: yup.string().required("is required"),
-  phoneNumber: yup.string().required("is required"),
+  emailAddress: yup
+    .string()
+    .required("is required")
+    .matches(/@gmail\.com$/, "Wrong format"),
+  phoneNumber: yup
+    .string()
+    .required("is required")
+    .min(15, "must be at least 10 characters long"),
   yourAddress: yup.string().required("is required"),
   zipCode: yup
     .string()
@@ -104,12 +110,8 @@ export default function Checkout() {
               id="phoneNumber"
               mask="+1 999-999-9999"
               placeholder="+1 202-555-0136"
+              maskChar={""}
             />
-            {/* <input
-              placeholder="+1 202-555-0136"
-              id="phoneNumber"
-              {...register("phoneNumber")}
-            /> */}
           </InputContainer>
         </Section>
         <Section>
@@ -264,6 +266,8 @@ const CheckBoxContainer = styled.div`
   gap: 2.1rem;
   padding-left: 2rem;
   label {
+    padding-block: 2rem;
+    width: 100%;
     cursor: pointer;
     color: #000;
     font-size: 14px;
@@ -308,6 +312,7 @@ const InputContainer = styled.div<{ error?: string }>`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
   & > div {
     display: flex;
     justify-content: space-between;

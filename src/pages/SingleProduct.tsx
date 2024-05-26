@@ -1,14 +1,15 @@
 import { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Audiophile_Context } from "../App";
 import styled from "styled-components";
 import AddToCartButtons from "../components/AddToCartButtons";
+import GoBackButton from "../components/GoBackButton";
 
 function SingleProduct() {
   const { name } = useParams();
   const { data } = useContext(Audiophile_Context);
   const singleProductData = data.find((item) => item.name == name);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   console.log(singleProductData);
   let formatedPrice = "";
   if (singleProductData?.price) {
@@ -17,9 +18,7 @@ function SingleProduct() {
 
   return (
     <SingleProductContainer>
-      <h3 className="goBack" onClick={() => navigate(-1)}>
-        Go back
-      </h3>
+      <GoBackButton />
       <img src={singleProductData?.image.mobile} alt="" />
       {singleProductData?.new ? (
         <h3 className="newPRoduct">NEW PRODUCT</h3>
@@ -86,6 +85,7 @@ const SingleProductContainer = styled.div`
   margin-inline: 2.5rem;
   margin-block: 2rem;
   gap: 2.4rem;
+
   .newPRoduct {
     align-self: flex-start;
     color: #d87d4a;
@@ -120,13 +120,7 @@ const SingleProductContainer = styled.div`
     letter-spacing: 1.286px;
     text-transform: uppercase;
   }
-  .goBack {
-    align-self: flex-start;
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 25px;
-    opacity: 0.5;
-  }
+
   .boxDiv {
     margin-block: 8.8rem;
     width: 327px;

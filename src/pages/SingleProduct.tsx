@@ -8,7 +8,7 @@ import CartContent from "../components/CartContent";
 
 function SingleProduct() {
   const { name } = useParams();
-  const { data, showCart } = useContext(Audiophile_Context);
+  const { data, showCart, setShowCart } = useContext(Audiophile_Context);
   const singleProductData = data.find((item) => item.name == name);
 
   console.log(singleProductData);
@@ -18,7 +18,14 @@ function SingleProduct() {
   }
 
   return (
-    <SingleProductContainer>
+    <SingleProductContainer
+      onClick={(e) => {
+        const clickedElement = e.target as HTMLElement;
+        if (!clickedElement.closest(".cartComponent")) {
+          setShowCart(false);
+        }
+      }}
+    >
       {showCart && <CartContent />}
       <GoBackButton />
       <img src={singleProductData?.image.mobile} alt="" />

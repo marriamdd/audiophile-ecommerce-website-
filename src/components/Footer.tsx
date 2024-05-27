@@ -1,9 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Audiophile_Context } from "../App";
 
 export default function Footer() {
+  const { setShowCart } = useContext(Audiophile_Context);
   return (
-    <FooterStyled>
+    <FooterStyled
+      onClick={(e) => {
+        const clickedElement = e.target as HTMLElement;
+        if (!clickedElement.closest(".cartComponent")) {
+          setShowCart(false);
+        }
+      }}
+    >
       <Link to={"/"}>
         <img src="/assets/shared/desktop/logo.svg" />
       </Link>

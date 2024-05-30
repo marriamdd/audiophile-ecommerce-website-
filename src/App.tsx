@@ -31,6 +31,8 @@ export const Audiophile_Context = createContext<{
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   showCart: boolean;
   setShowCart: React.Dispatch<React.SetStateAction<boolean>>;
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
 }>({
   data: [],
   setData: () => {},
@@ -44,6 +46,8 @@ export const Audiophile_Context = createContext<{
   setCartItems: () => {},
   showCart: false,
   setShowCart: () => {},
+  quantity: 1,
+  setQuantity: () => {},
 });
 function App() {
   const [data, setData] = useState<IProduct[]>(Data);
@@ -52,6 +56,7 @@ function App() {
   const [thanksComponent, setThanksComponent] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
   console.log(cartItems);
 
   return (
@@ -70,6 +75,8 @@ function App() {
           setCategory,
           showCart,
           setShowCart,
+          quantity,
+          setQuantity,
         }}
       >
         <BrowserRouter>

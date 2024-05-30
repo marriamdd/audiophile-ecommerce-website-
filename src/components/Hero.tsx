@@ -3,10 +3,17 @@ import styled from "styled-components";
 function Hero() {
   return (
     <HeroStyes>
-      <img
-        src="/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg"
-        alt=""
-      />
+      <picture>
+        <source
+          media="(min-width:768px)"
+          srcSet="/assets/shared/tablet/image-best-gear.jpg"
+        />
+        <source
+          media="(min-width:1440px)"
+          srcSet="/assets/shared/desktop/image-best-gear.jpg"
+        />
+        <img src="/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg" />
+      </picture>
       <h2>
         Bringing you the <span>best</span> audio gear
       </h2>
@@ -30,10 +37,22 @@ const HeroStyes = styled.div`
   align-items: center;
   justify-content: center;
   gap: 3rem;
-  img {
-    border-radius: 8px;
-    width: 32.7rem;
-    height: 25rem;
+  margin-top: 2rem;
+
+  picture {
+    img {
+      border-radius: 8px;
+      width: 32.7rem;
+      height: 25rem;
+      @media screen and (min-width: 768px) {
+        width: 689px;
+        height: 320px;
+      }
+      @media screen and (min-width: 1440px) {
+        height: 540px;
+        width: 540px;
+      }
+    }
   }
   h2 {
     width: 327px;
@@ -43,6 +62,13 @@ const HeroStyes = styled.div`
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+      width: 573px;
+      font-size: 40px;
+      letter-spacing: 1.429px;
+      line-height: 44px;
+      margin-top: 2rem;
+    }
     span {
       color: #d87d4a;
     }
@@ -57,5 +83,10 @@ const HeroStyes = styled.div`
     font-weight: 400;
     line-height: 25px;
     padding-bottom: 12rem;
+    @media screen and (min-width: 768px) {
+      width: 573px;
+    }
   }
 `;
+
+// public/assets/home/tablet/image-speaker-zx9.png

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import SeeProductComponent from "./SeeProductComponent";
+import SeeProductComponent from "./SeeProductComponent";
 
 export default function HomeHeaderComponent() {
   return (
@@ -12,7 +12,12 @@ export default function HomeHeaderComponent() {
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
         </p>
-        {/* <SeeProductComponent backGround={"#D87D4A"} /> */}
+        <SeeProductComponent
+          to={`/single/XX99%20Mark%20II%20Headphones`}
+          backGround={"#D87D4A"}
+          color={"white"}
+          border={"none"}
+        />
       </div>
     </HomeHeader>
   );
@@ -21,12 +26,16 @@ const HomeHeader = styled.div`
   background-image: url(assets/home/mobile/image-header.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   height: 60rem;
   display: flex;
-
+  width: 100%;
   align-items: center;
   justify-content: center;
+  @media screen and (min-width: 768px) {
+    background-image: url(/assets/home/tablet/image-header.jpg);
+    width: 100%;
+  }
 
   & > div {
     width: 32.8rem;
@@ -35,7 +44,10 @@ const HomeHeader = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    @media screen and (min-width: 768px) {
+      width: 379px;
+      height: 346px;
+    }
     h1 {
       color: #fff;
       text-align: center;
@@ -45,6 +57,11 @@ const HomeHeader = styled.div`
       letter-spacing: 1.286px;
       text-transform: uppercase;
       margin-bottom: 2.4rem;
+      @media screen and (min-width: 768px) {
+        font-size: 56px;
+        line-height: 58px;
+        letter-spacing: 2px;
+      }
     }
     p {
       color: #fff;
@@ -53,6 +70,7 @@ const HomeHeader = styled.div`
       font-weight: 400;
       line-height: 2.5rem;
       margin-bottom: 2.8rem;
+      opacity: 0.75;
     }
   }
   & > div .title {

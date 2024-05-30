@@ -50,7 +50,7 @@ const CategoriesContainer = styled.div<{ position: string; zindex: number }>`
   transition: gap 1s ease;
   padding-bottom: 5rem;
   @media screen and (min-width: 768px) {
-    gap: 4.5rem;
+    gap: 2rem;
     height: 34rem;
     flex-direction: row;
     padding-top: 0rem;

@@ -2,25 +2,42 @@ import { useContext, useState } from "react";
 import styled from "styled-components";
 import { Audiophile_Context } from "../App";
 import { IProduct } from "../types/Types";
+
 const AddToCartButtons = ({
   singleProductData,
 }: {
   singleProductData: IProduct | undefined;
 }) => {
-  const { setCartItems } = useContext(Audiophile_Context);
+  const { cartItems, setCartItems } = useContext(Audiophile_Context);
   const [quantity, setQuantity] = useState(1);
-  const handleAddToCart = () => {
+
+  const handleAddProduct = () => {
     if (singleProductData) {
-      setCartItems((prev) => [
-        ...prev,
-        {
-          id: singleProductData.id,
-          name: singleProductData.name,
-          price: singleProductData.price,
-          quantity: quantity,
-          img: singleProductData.image.mobile,
-        },
-      ]);
+      const { id, name, price, image } = singleProductData;
+      const productExist = cartItems.find(
+        (item) => item.id === singleProductData.id
+      );
+
+      if (productExist) {
+        setCartItems(
+          cartItems.map((item) =>
+            item.id === singleProductData.id
+              ? { ...productExist, quantity: productExist.quantity }
+              : item
+          )
+        );
+      } else {
+        setCartItems([
+          ...cartItems,
+          {
+            id,
+            name,
+            price,
+            img: image.mobile,
+            quantity: quantity,
+          },
+        ]);
+      }
     }
   };
 
@@ -33,6 +50,7 @@ const AddToCartButtons = ({
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
   };
+  console.log(quantity);
   return (
     <AddToCartButtonsStyle>
       <div>
@@ -45,7 +63,7 @@ const AddToCartButtons = ({
         </span>
       </div>
 
-      <button onClick={handleAddToCart}>ADD TO CART</button>
+      <button onClick={handleAddProduct}>ADD TO CART</button>
     </AddToCartButtonsStyle>
   );
 };

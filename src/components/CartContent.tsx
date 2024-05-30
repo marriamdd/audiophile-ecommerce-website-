@@ -5,15 +5,30 @@ import EmptyCart from "./EmptyCart";
 import { CartIContainer } from "../stylesComponents/CartContainerStyles";
 
 export default function CartContent() {
-  const { cartItems, setShowCart } = useContext(Audiophile_Context);
-  let formattedPrice = "";
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const format = cartItems.map((item) => {
-    if (item.price) {
-      formattedPrice = `$${(item?.price / 1000).toFixed(3)}`;
-    }
-  });
+  const { setCartItems, cartItems, setShowCart } =
+    useContext(Audiophile_Context);
 
+  const formatPrice = (price: number) => {
+    return `$${(price / 1000).toFixed(3)}`;
+  };
+  const handleDecreaseQuantity = (itemId: number) => {
+    const item = cartItems.find((item) => item.id === itemId);
+    if (item && item.quantity > 1) {
+      setCartItems((prev) =>
+        prev.map((item) =>
+          item.id == itemId ? { ...item, quantity: item.quantity - 1 } : item
+        )
+      );
+    }
+  };
+
+  const handleIncreaseQuantity = (itemId: number) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.id == itemId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
   return (
     <div className="cartComponent">
       <BlurDiv onClick={() => setShowCart(false)}></BlurDiv>
@@ -31,12 +46,22 @@ export default function CartContent() {
               <img src={item.img} alt="" />
               <div className="price_name_div">
                 <h3>{item.name}</h3>
-                <span>{formattedPrice}</span>
+                <span>{formatPrice(item.price)}</span>
               </div>
               <div className="countContainer">
-                <span className="minus">-</span>
+                <span
+                  onClick={() => handleDecreaseQuantity(item.id)}
+                  className="minus"
+                >
+                  -
+                </span>
                 <input readOnly value={item.quantity} />
-                <span className="plus">+</span>
+                <span
+                  onClick={() => handleIncreaseQuantity(item.id)}
+                  className="plus"
+                >
+                  +
+                </span>
               </div>
             </div>
           ))}
@@ -49,7 +74,7 @@ export default function CartContent() {
 const BlurDiv = styled.div`
   opacity: 0.4;
   background: #000;
-  position: absolute;
+  position: fixed;
   z-index: 99999;
   width: 100%;
   height: 100%;

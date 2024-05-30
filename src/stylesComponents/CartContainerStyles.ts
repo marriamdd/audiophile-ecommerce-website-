@@ -4,7 +4,7 @@ export const CartIContainer = styled.div`
   display: flex;
   width: 327px;
   left: 2rem;
-  position: absolute;
+
   top: 10rem;
 
   border-radius: 8px;

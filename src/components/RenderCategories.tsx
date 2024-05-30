@@ -13,10 +13,10 @@ const RenderCategories = ({ category }: { category: string }) => {
   }, [category]);
   return (
     <CategoryContainer>
-      {showCart && <CartContent />}
       <div className="categoryTitle">
         <h2>{category}</h2>
       </div>
+      {showCart && <CartContent />}
       {reversedData.map((item, index) =>
         item.category == category ? (
           <CategoryItemDiv key={index}>
@@ -27,6 +27,8 @@ const RenderCategories = ({ category }: { category: string }) => {
             <SeeProductComponent
               to={`/single/${item.name}`}
               backGround={"#D87D4A"}
+              color={"white"}
+              border={"none"}
             />
           </CategoryItemDiv>
         ) : null
@@ -40,7 +42,7 @@ export default RenderCategories;
 const CategoryContainer = styled.div`
   /* padding-top: 6.4rem; */
   position: relative;
-  height: 100%;
+  /* min-height: 100%; */
   display: flex;
   flex-direction: column;
   gap: 2rem;

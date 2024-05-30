@@ -70,7 +70,7 @@ const AddToCartButtons = ({
 
 export default AddToCartButtons;
 
-const AddToCartButtonsStyle = styled.div`
+export const AddToCartButtonsStyle = styled.div`
   display: flex;
   gap: 1rem;
   & > div {

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import GoBackButton from "../components/GoBackButton";
@@ -7,6 +7,7 @@ import * as yup from "yup";
 import InputMask from "react-input-mask";
 import { Audiophile_Context } from "../App";
 import ThanksComponent from "../components/ThanksComponent";
+import Summary from "../components/Summary";
 
 const schema = yup.object({
   name: yup
@@ -34,11 +35,9 @@ const schema = yup.object({
   country: yup.string().required("is required"),
   paymentMethod: yup.string().required("is required"),
   E_Money_Number: yup.string(),
-  // . required("is required"),
-  E_Money_Pin: yup.string(),
-  // .min(4, "must be at least 4 characters long ")
-  // .required("is required"),
+  E_Money_Pin: yup.string().min(4, "must be at least 4 characters long "),
 });
+
 interface InputTypes {
   name: string;
   emailAddress: string;
@@ -55,9 +54,13 @@ export default function Checkout() {
   const {
     register,
     handleSubmit,
+    unregister,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm<InputTypes>({
     resolver: yupResolver(schema),
+    shouldUnregister: false,
   });
   const { setThanksComponent } = useContext(Audiophile_Context);
   const [e_moneyGraph, setE_moneyGraph] = useState(false);
@@ -66,7 +69,12 @@ export default function Checkout() {
     setThanksComponent(true);
   };
   console.log(errors);
+  const paymentMethodWatch = watch("paymentMethod");
+  useEffect(() => {
+    setValue("paymentMethod", "cash");
+  }, []);
 
+  console.log(e_moneyGraph);
   return (
     <CheckoutPage>
       <div>
@@ -199,7 +207,13 @@ export default function Checkout() {
 
               <label htmlFor="e_Money">E-Money </label>
             </CheckBoxContainer>
-            <CheckBoxContainer onClick={() => setE_moneyGraph(false)}>
+            <CheckBoxContainer
+              onClick={() => {
+                setE_moneyGraph(false);
+                // unregister("E_Money_Number");
+                // unregister("E_Money_Pin");
+              }}
+            >
               <input
                 id="cash"
                 value="cash"
@@ -225,7 +239,8 @@ export default function Checkout() {
               <input
                 placeholder="238521993"
                 id="e_Money_number"
-                {...register("E_Money_Number")}
+                {...(register("E_Money_Number"),
+                paymentMethodWatch == "e_Money" && { required: "is required" })}
               />
             </InputContainer>
             <InputContainer
@@ -239,13 +254,15 @@ export default function Checkout() {
               <input
                 placeholder="6891"
                 id="e_Money_Pin"
-                {...register("E_Money_Pin")}
+                {...(register("E_Money_Pin"),
+                paymentMethodWatch == "e_Money" && { required: "is required" })}
               />
             </InputContainer>
           </Section>
         ) : null}
-        <Continue_pay type="submit" value={"CONTINUE & PAY"} />
+        <Summary />
       </Form>
+
       <ThanksComponent />
     </CheckoutPage>
   );
@@ -259,8 +276,8 @@ const CheckoutPage = styled.div`
   justify-content: center;
   padding-top: 2rem;
   & > div {
-    align-self: flex-start;
-    padding-left: 4rem;
+    /* align-self: flex-start; */
+    /* padding-left: 4rem; */
   }
   .sideBySideDiv {
     display: flex;
@@ -297,18 +314,7 @@ const CheckoutPage = styled.div`
     }
   }
 `;
-const Continue_pay = styled.input`
-  margin-top: 2rem;
-  width: 279px;
-  height: 48px;
-  background: #d87d4a;
-  color: #fff;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  border: none;
-`;
+
 const CheckBoxContainer = styled.div`
   width: 280px;
   height: 56px;

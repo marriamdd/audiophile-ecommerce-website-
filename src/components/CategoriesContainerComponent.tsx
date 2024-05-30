@@ -56,6 +56,7 @@ const CategoriesContainer = styled.div<{ position: string; zindex: number }>`
     padding-top: 0rem;
     justify-content: center;
     transition: justify-content 1s ease, gap 1s ease;
+    padding-top: 5rem;
   }
   @media screen and (min-width: 900px) {
     gap: 8rem;

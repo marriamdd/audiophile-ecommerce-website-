@@ -20,7 +20,18 @@ const RenderCategories = ({ category }: { category: string }) => {
       {reversedData.map((item, index) =>
         item.category == category ? (
           <CategoryItemDiv key={index}>
-            <img src={item.image.mobile} alt="" />
+            <picture>
+              <source
+                media="(min-width:768px)"
+                srcSet={item.categoryImage.tablet}
+              />
+              <source
+                media="(min-width:1140px)"
+                srcSet={item.categoryImage.desktop}
+              />
+              <img srcSet={item.categoryImage.mobile} alt="" />
+            </picture>
+
             {item.new ? <h3>NEW PRODUCT</h3> : null}
             <h2>{item.slug}</h2>
             <p>{item.description}</p>
@@ -49,7 +60,6 @@ const CategoryContainer = styled.div`
   .categoryTitle {
     display: flex;
     height: 102px;
-    width: 375px;
     align-items: center;
     justify-content: center;
     background: #000;
@@ -60,23 +70,38 @@ const CategoryContainer = styled.div`
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
+      @media screen and (min-width: 768px) {
+        font-size: 40px;
+        line-height: 44px;
+        letter-spacing: 1.429px;
+      }
     }
   }
 `;
 const CategoryItemDiv = styled.div`
-  width: 375px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #000;
   text-align: center;
-  & > img {
-    width: 327px;
-    height: 352px;
-    border-radius: 8px;
-    background: #f1f1f1;
+  picture {
+    width: 100%;
+    img {
+      width: 327px;
+      height: 352px;
+      border-radius: 8px;
+      background: #f1f1f1;
+      @media screen and (min-width: 768px) {
+        width: 689px;
+        height: 352px;
+      }
+      @media screen and (min-width: 1440px) {
+      }
+    }
   }
+
   & > h3 {
     color: #d87d4a;
     font-size: 1.4rem;
@@ -98,5 +123,8 @@ const CategoryItemDiv = styled.div`
     font-weight: 400;
     line-height: 2.5rem;
     padding-bottom: 2.4rem;
+    @media screen and (min-width: 768px) {
+      width: 572px;
+    }
   }
 `;

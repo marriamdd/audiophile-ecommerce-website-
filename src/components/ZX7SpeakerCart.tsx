@@ -51,6 +51,12 @@ const ZX7SpeakerCartStyles = styled.div`
     img {
       width: 327px;
       height: 352px;
+      @media screen and (min-width: 768px) {
+        width: 689px;
+        height: 320px;
+      }
+      @media screen and (min-width: 1440px) {
+      }
     }
   }
   .SeeProductComponentDiv {

@@ -37,6 +37,7 @@ const HomeHeader = styled.div`
     width: 100%;
     background-position: 0px -110px;
     transition: background-position 1s;
+    margin-bottom: 4rem;
   }
 
   & > div {

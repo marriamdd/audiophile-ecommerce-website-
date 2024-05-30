@@ -29,17 +29,20 @@ export default function Footer() {
         helping you get the most out of personal audio. Come and visit our demo
         facility - we’re open 7 days a week.
       </p>
-      <p>Copyright 2021. All Rights Reserved</p>
-      <div>
-        <span>
-          <img src="/assets/shared/desktop/icon-facebook.svg" alt="" />
-        </span>
-        <span>
-          <img src="/assets/shared/desktop/icon-twitter.svg" alt="" />
-        </span>
-        <span>
-          <img src="/assets/shared/desktop/icon-instagram.svg" alt="" />
-        </span>
+
+      <div className="nav_copyright_container">
+        <p>Copyright 2021. All Rights Reserved</p>
+        <div>
+          <span>
+            <img src="/assets/shared/desktop/icon-facebook.svg" alt="" />
+          </span>
+          <span>
+            <img src="/assets/shared/desktop/icon-twitter.svg" alt="" />
+          </span>
+          <span>
+            <img src="/assets/shared/desktop/icon-instagram.svg" alt="" />
+          </span>
+        </div>
       </div>
     </FooterStyled>
   );
@@ -53,6 +56,10 @@ const FooterStyled = styled.footer`
   align-items: center;
   gap: 4.8rem;
   background: #101010;
+  @media screen and (min-width: 678px) {
+    align-items: flex-start;
+    padding-left: 3rem;
+  }
   h2 {
     color: white;
     font-weight: bold;
@@ -66,6 +73,8 @@ const FooterStyled = styled.footer`
     font-weight: 400;
     line-height: 25px;
     opacity: 0.5;
+    padding-inline: 1rem;
+    text-align: start;
   }
   nav {
     display: flex;
@@ -79,6 +88,9 @@ const FooterStyled = styled.footer`
     line-height: 25px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+    }
   }
   a {
     cursor: pointer;
@@ -88,5 +100,20 @@ const FooterStyled = styled.footer`
   div {
     display: flex;
     gap: 2rem;
+    @media screen and (min-width: 768px) {
+      padding-inline: 1rem;
+    }
+  }
+  .nav_copyright_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+    }
   }
 `;

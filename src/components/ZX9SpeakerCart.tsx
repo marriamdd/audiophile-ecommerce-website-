@@ -111,8 +111,8 @@ const ZX9SpeakerCartContainer = styled.div`
     @media screen and (min-width: 768px) {
       display: flex;
       position: absolute;
-      width: 944px;
-      height: 944px;
+      /* width: 944px; */
+      /* height: 944px; */ //ჰეითს როცა ვაბრუნებ ზემოთ ფარავს რახან აბსოლიტია დავუყოო
       border-radius: 944px;
       border: 1px solid #fff;
       opacity: 0.2;

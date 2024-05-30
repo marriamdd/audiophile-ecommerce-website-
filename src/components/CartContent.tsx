@@ -11,6 +11,15 @@ export default function CartContent() {
   const formatPrice = (price: number) => {
     return `$${(price / 1000).toFixed(3)}`;
   };
+
+  const totalPrice = () => {
+    let total = 0;
+    cartItems.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    return total;
+  };
+
   const handleDecreaseQuantity = (itemId: number) => {
     const item = cartItems.find((item) => item.id === itemId);
     if (item && item.quantity > 1) {
@@ -65,6 +74,12 @@ export default function CartContent() {
               </div>
             </div>
           ))}
+
+          <div className="total">
+            <h3>TOTAL</h3>
+            <span>{formatPrice(totalPrice())}</span>
+          </div>
+          <button>checkout</button>
         </CartIContainer>
       )}
     </div>
@@ -79,7 +94,7 @@ const BlurDiv = styled.div`
   width: 100%;
   height: 100%;
   top: 0;
-  /* bottom: 2rem; */
+
   left: 0;
   right: 0;
 `;

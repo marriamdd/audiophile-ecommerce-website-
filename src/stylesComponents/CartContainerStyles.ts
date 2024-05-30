@@ -16,6 +16,11 @@ export const CartIContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-bottom: 3rem;
+  @media screen and (min-width: 768px) {
+    top: 3rem;
+    left: 35rem;
+    width: 377px;
+  }
   .cartHeader {
     display: flex;
     width: 271px;
@@ -97,5 +102,18 @@ export const CartIContainer = styled.div`
     right: 0rem;
     width: 40px;
     text-align: center;
+  }
+
+  button {
+    width: 313px;
+    height: 48px;
+    background: #d87d4a;
+
+    text-align: center;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 `;

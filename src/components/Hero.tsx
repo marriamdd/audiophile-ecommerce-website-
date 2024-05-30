@@ -88,5 +88,3 @@ const HeroStyes = styled.div`
     }
   }
 `;
-
-// public/assets/home/tablet/image-speaker-zx9.png

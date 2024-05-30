@@ -4,14 +4,31 @@ import SeeProductComponent from "./SeeProductComponent";
 function ZX9SpeakerCart() {
   return (
     <ZX9SpeakerCartContainer>
-      <picture>
-        <img src="/assets/home/tablet/image-speaker-zx9.png" alt="" />
-      </picture>
-      <h2>ZX9 SPEAKER</h2>
-      <p>
-        Upgrade to premium speakers that are phenomenally built to deliver truly
-        remarkable sound.
-      </p>
+      <div className="circles_img_container">
+        <div className="circle1"></div>
+        <div className="circle2"></div>
+        <div className="circle3"></div>
+        <picture>
+          <source
+            media="(min-width:768px)"
+            srcSet="/assets/home/tablet/image-speaker-zx9.png"
+          />
+          <source
+            media="(min-width:1140px)"
+            srcSet="/assets/home/desktop/image-speaker-zx9.png"
+          />
+          <img src="/assets/home/mobile/image-speaker-zx9.png" alt="" />
+        </picture>
+      </div>
+
+      <div className="content">
+        <h2>ZX9 SPEAKER</h2>
+        <p>
+          Upgrade to premium speakers that are phenomenally built to deliver
+          truly remarkable sound.
+        </p>
+      </div>
+
       <SeeProductComponent
         to={`/single/ZX9 Speaker`}
         backGround={"black"}
@@ -29,14 +46,18 @@ const ZX9SpeakerCartContainer = styled.div`
   align-items: center;
   gap: 2.6rem;
   width: 90%;
-  height: 600px;
+  /* height: 600px; */
   border-radius: 8px;
   background: #d87d4a;
   margin-bottom: 5rem;
+  @media screen and (min-width: 768px) {
+    height: 720px;
+  }
   picture {
     img {
-      width: 172.248px;
-      height: 207px;
+      margin-top: 6rem;
+      width: 165px;
+      height: 203px;
       @media screen and (min-width: 768px) {
         width: 197.212px;
         height: 237px;
@@ -46,6 +67,67 @@ const ZX9SpeakerCartContainer = styled.div`
         height: 493px;
       }
     }
+  }
+  .circles_img_container {
+    position: relative;
+    .circle1 {
+      position: absolute;
+      width: 279px;
+      height: 279px;
+      border-radius: 279px;
+      border: 1px solid #fff;
+      opacity: 0.2;
+      top: 2.1rem;
+      left: -6rem;
+      @media screen and (min-width: 768px) {
+        width: 472px;
+        height: 472px;
+        top: -3rem;
+        left: -13rem;
+      }
+      @media screen and (min-width: 1140px) {
+      }
+    }
+  }
+  .circle2 {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 279px;
+    border: 1px solid #fff;
+    opacity: 0.2;
+    top: 0rem;
+    left: -8rem;
+    @media screen and (min-width: 768px) {
+      width: 542px;
+      height: 542px;
+      top: -6rem;
+      right: -6rem;
+      left: -17rem;
+    }
+  }
+  .circle3 {
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: flex;
+      position: absolute;
+      width: 944px;
+      height: 944px;
+      border-radius: 944px;
+      border: 1px solid #fff;
+      opacity: 0.2;
+      top: -26rem;
+      left: -39rem;
+    }
+  }
+  .content {
+    /* margin-top: 35rem; */
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
   }
   h2 {
     color: #fff;
@@ -69,5 +151,8 @@ const ZX9SpeakerCartContainer = styled.div`
     font-size: 15px;
     font-weight: 400;
     line-height: 25px;
+    @media screen and (min-width: 768px) {
+      width: 349px;
+    }
   }
 `;

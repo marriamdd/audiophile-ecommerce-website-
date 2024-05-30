@@ -24,7 +24,7 @@ export default function HomeHeaderComponent() {
 }
 const HomeHeader = styled.div`
   background-image: url(assets/home/mobile/image-header.jpg);
-  background-position: center;
+  background-position: 0px -80px;
   background-repeat: no-repeat;
   background-size: cover;
   height: 60rem;
@@ -35,11 +35,11 @@ const HomeHeader = styled.div`
   @media screen and (min-width: 768px) {
     background-image: url(/assets/home/tablet/image-header.jpg);
     width: 100%;
+    background-position: 0px -110px;
+    transition: background-position 1s;
   }
 
   & > div {
-    width: 32.8rem;
-    height: 29rem;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -49,6 +49,7 @@ const HomeHeader = styled.div`
       height: 346px;
     }
     h1 {
+      width: 328px;
       color: #fff;
       text-align: center;
       font-size: 3.6rem;
@@ -61,9 +62,11 @@ const HomeHeader = styled.div`
         font-size: 56px;
         line-height: 58px;
         letter-spacing: 2px;
+        width: 396px;
       }
     }
     p {
+      width: 328px;
       color: #fff;
       text-align: center;
       font-size: 1.5rem;
@@ -71,6 +74,10 @@ const HomeHeader = styled.div`
       line-height: 2.5rem;
       margin-bottom: 2.8rem;
       opacity: 0.75;
+      margin-bottom: 4rem;
+      @media screen and (min-width: 768px) {
+        width: 396px;
+      }
     }
   }
   & > div .title {

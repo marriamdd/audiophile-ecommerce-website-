@@ -11,7 +11,7 @@ function ZX7SpeakerCart() {
           srcSet="/assets/home/tablet/image-speaker-zx7.jpg"
         />
         <source
-          media="(min-width:768px)"
+          media="(min-width:1140px)"
           srcSet="/assets/home/desktop/image-speaker-zx7.jpg"
         />
         <img

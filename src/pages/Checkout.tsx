@@ -9,35 +9,6 @@ import { Audiophile_Context } from "../App";
 import ThanksComponent from "../components/ThanksComponent";
 import Summary from "../components/Summary";
 
-const schema = yup.object({
-  name: yup
-    .string()
-    .required("is required")
-    .min(5, "must be at least 5 characters long ")
-    .test("includes space", "Please enter a first and last name", (value) => {
-      return value?.includes(" ");
-    }),
-  emailAddress: yup
-    .string()
-    .required("is required")
-    .matches(/@gmail\.com$/, "Wrong format"),
-  phoneNumber: yup
-    .string()
-    .required("is required")
-    .min(15, "must be at least 10 characters long"),
-  yourAddress: yup.string().required("is required"),
-  zipCode: yup
-    .string()
-    .required("is required")
-    .min(5, "must be at least 5 characters long "),
-
-  city: yup.string().required("is required"),
-  country: yup.string().required("is required"),
-  paymentMethod: yup.string().required("is required"),
-  E_Money_Number: yup.string(),
-  E_Money_Pin: yup.string().min(4, "must be at least 4 characters long "),
-});
-
 interface InputTypes {
   name: string;
   emailAddress: string;
@@ -51,30 +22,76 @@ interface InputTypes {
   E_Money_Pin?: string;
 }
 export default function Checkout() {
-  const {
-    register,
-    handleSubmit,
-    unregister,
-    watch,
-    setValue,
-    formState: { errors },
-  } = useForm<InputTypes>({
-    resolver: yupResolver(schema),
-    shouldUnregister: false,
-  });
   const { setThanksComponent } = useContext(Audiophile_Context);
   const [e_moneyGraph, setE_moneyGraph] = useState(false);
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
     console.log(data);
     setThanksComponent(true);
   };
-  console.log(errors);
-  const paymentMethodWatch = watch("paymentMethod");
-  useEffect(() => {
-    setValue("paymentMethod", "cash");
-  }, []);
 
-  console.log(e_moneyGraph);
+  const generateSchema = (e_moneyGraph: boolean) => {
+    const schema = yup.object().shape({
+      name: yup
+        .string()
+        .required("is required")
+        .min(5, "must be at least 5 characters long ")
+        .test(
+          "includes space",
+          "Please enter a first and last name",
+          (value) => {
+            return value?.includes(" ");
+          }
+        ),
+      emailAddress: yup
+        .string()
+        .required("is required")
+        .matches(/@gmail\.com$/, "Wrong format"),
+      phoneNumber: yup
+        .string()
+        .required("is required")
+        .min(15, "must be at least 10 characters long"),
+      yourAddress: yup.string().required("is required"),
+      zipCode: yup
+        .string()
+        .required("is required")
+        .min(5, "must be at least 5 characters long "),
+      city: yup.string().required("is required"),
+      country: yup.string().required("is required"),
+      paymentMethod: yup.string().required("is required"),
+      E_Money_Number: yup.string(),
+      E_Money_Pin: yup.string(),
+
+      ...(e_moneyGraph
+        ? {
+            E_Money_Number: yup.string().required("is required"),
+            E_Money_Pin: yup
+              .string()
+              .min(4, "must be at least 4 characters long ")
+              .required("is required"),
+          }
+        : {}),
+    });
+    return schema;
+  };
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<InputTypes>({
+    resolver: yupResolver(generateSchema(e_moneyGraph)),
+    shouldUnregister: false,
+    defaultValues: {
+      paymentMethod: "cash",
+    },
+  });
+
+  useEffect(() => {
+    generateSchema(e_moneyGraph);
+  }, [e_moneyGraph]);
+
+  console.log(errors);
+
   return (
     <CheckoutPage>
       <div>
@@ -239,8 +256,10 @@ export default function Checkout() {
               <input
                 placeholder="238521993"
                 id="e_Money_number"
-                {...(register("E_Money_Number"),
-                paymentMethodWatch == "e_Money" && { required: "is required" })}
+                {
+                  ...register("E_Money_Number")
+                  // paymentMethodWatch == "e_Money" && { required: "is required" }
+                }
               />
             </InputContainer>
             <InputContainer
@@ -254,8 +273,11 @@ export default function Checkout() {
               <input
                 placeholder="6891"
                 id="e_Money_Pin"
-                {...(register("E_Money_Pin"),
-                paymentMethodWatch == "e_Money" && { required: "is required" })}
+                {
+                  ...register("E_Money_Pin")
+                  // ,
+                  // paymentMethodWatch == "e_Money" && { required: "is required" }
+                }
               />
             </InputContainer>
           </Section>

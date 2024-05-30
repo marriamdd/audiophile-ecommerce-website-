@@ -68,10 +68,12 @@ const SummaryStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 327px;
+  width: 100%;
 
   border-radius: 8px;
   background: #fff;
+  .cartItem {
+  }
   .pricesContainer {
     width: 279px;
     display: flex;

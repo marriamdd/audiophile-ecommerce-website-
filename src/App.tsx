@@ -57,6 +57,7 @@ function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [showCart, setShowCart] = useState(false);
   const [quantity, setQuantity] = useState(1);
+
   console.log(cartItems);
 
   return (

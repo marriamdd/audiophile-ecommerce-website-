@@ -3,6 +3,7 @@ import { Audiophile_Context } from "../App";
 import styled from "styled-components";
 import EmptyCart from "./EmptyCart";
 import { CartIContainer } from "../stylesComponents/CartContainerStyles";
+import { Link } from "react-router-dom";
 
 export default function CartContent() {
   const { setCartItems, cartItems, setShowCart } =
@@ -79,7 +80,8 @@ export default function CartContent() {
             <h3>TOTAL</h3>
             <span>{formatPrice(totalPrice())}</span>
           </div>
-          <button>checkout</button>
+
+          <Link to="/Checkout">checkout</Link>
         </CartIContainer>
       )}
     </div>

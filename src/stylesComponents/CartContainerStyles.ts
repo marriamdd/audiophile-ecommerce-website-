@@ -47,6 +47,10 @@ export const CartIContainer = styled.div`
     align-items: center;
     gap: 1rem;
     width: 271px;
+    @media screen and (min-width: 768px) {
+      width: 313px;
+      gap: 2rem;
+    }
     img {
       width: 64px;
       height: 64px;
@@ -103,17 +107,23 @@ export const CartIContainer = styled.div`
     width: 40px;
     text-align: center;
   }
-
-  button {
+  .total {
+    display: flex;
+    width: 313px;
+    padding-inline: 1rem;
+    justify-content: space-between;
+  }
+  a {
     width: 313px;
     height: 48px;
     background: #d87d4a;
-
+    text-decoration: none;
     text-align: center;
     border: none;
     color: #fff;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
+    padding-block: 1rem;
   }
 `;

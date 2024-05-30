@@ -80,7 +80,6 @@ export default function Checkout() {
     formState: { errors },
   } = useForm<InputTypes>({
     resolver: yupResolver(generateSchema(e_moneyGraph)),
-    shouldUnregister: false,
     defaultValues: {
       paymentMethod: "cash",
     },

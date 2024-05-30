@@ -1,6 +1,8 @@
 import MobileCategoriesComponent from "./MobileCategoriesComponent";
 import styled from "styled-components";
-
+import HeadPhoneMenu from "../assets/headPhoneMenu.png";
+import Audiophile from "../assets/audiophile-ecommerce-website.png";
+import Speakers_menu from "../assets/speakers_menu.png";
 export default function CategoriesContainerComponent({
   position,
   zindex,
@@ -13,21 +15,21 @@ export default function CategoriesContainerComponent({
       <MobileCategoriesComponent
         title={"HeadPhones"}
         link={"/HeadPhones"}
-        img={"assets/menu_Imgs/headPhoneMenu.png"}
+        img={HeadPhoneMenu}
         height={"104px"}
         width={"79.916px"}
       />
       <MobileCategoriesComponent
         title={"Speakers"}
         link={"/Speakers"}
-        img={"assets/menu_Imgs/audiophile-ecommerce-website.png"}
+        img={Audiophile}
         height={"101px"}
         width={"84.044px"}
       />
       <MobileCategoriesComponent
         title={"EarPhones"}
         link={"/EarPhones"}
-        img={"assets/menu_Imgs/speakers_menu.png"}
+        img={Speakers_menu}
         height={"133px"}
         width={"147px"}
       />

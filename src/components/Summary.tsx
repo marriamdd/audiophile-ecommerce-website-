@@ -15,15 +15,10 @@ export default function Summary() {
     return total;
   };
   const vat = (totalPrice: number) => {
-    let vatValue = 0;
-
-    vatValue = totalPrice * 0.18;
-    return vatValue;
+    return totalPrice * 0.18;
   };
   const grandTotal = (total: number, vat: number) => {
-    let grand = 0;
-    grand = total + vat + 50;
-    return grand;
+    return total + vat + 50;
   };
   return (
     <SummaryStyles>
@@ -144,5 +139,3 @@ const Continue_pay = styled.input`
   letter-spacing: 1px;
   border: none;
 `;
-
-//რეგისტრაცია არმინდა რომმოხდეს თუ არარის მონიშნული იმ ინფუთების

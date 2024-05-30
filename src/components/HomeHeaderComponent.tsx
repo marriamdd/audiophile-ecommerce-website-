@@ -40,6 +40,9 @@ const HomeHeader = styled.div`
     margin-bottom: 4rem;
   }
 
+  @media screen and (min-width: 1440px) {
+    background-image: url(/assets/home/desktop/image-hero.jpg);
+  }
   & > div {
     align-items: center;
     display: flex;

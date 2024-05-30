@@ -112,6 +112,21 @@ export const CartIContainer = styled.div`
     width: 313px;
     padding-inline: 1rem;
     justify-content: space-between;
+    h3 {
+      color: #000;
+      font-size: 15px;
+      opacity: 0.5;
+      font-weight: 400;
+      line-height: 25px;
+    }
+    span {
+      opacity: 1;
+      color: #000;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
   }
   a {
     width: 313px;

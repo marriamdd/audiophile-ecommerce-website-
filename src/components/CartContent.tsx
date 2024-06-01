@@ -20,7 +20,9 @@ export default function CartContent() {
     });
     return total;
   };
-
+  const handleRemoveAll = () => {
+    setCartItems([]);
+  };
   const handleDecreaseQuantity = (itemId: number) => {
     const item = cartItems.find((item) => item.id === itemId);
     if (item && item.quantity > 1) {
@@ -39,6 +41,7 @@ export default function CartContent() {
       )
     );
   };
+  console.log(cartItems);
   return (
     <div className="cartComponent">
       <BlurDiv onClick={() => setShowCart(false)}></BlurDiv>
@@ -48,7 +51,7 @@ export default function CartContent() {
         <CartIContainer>
           <div className="cartHeader">
             <h2>Cart ({cartItems.length})</h2>
-            <span>Remove all</span>
+            <span onClick={handleRemoveAll}>Remove all</span>
           </div>
 
           {cartItems.map((item) => (

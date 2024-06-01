@@ -123,7 +123,7 @@ function SingleProduct() {
             <div key={Math.random()} className="mayAlsoLikeItem">
               <div className="imgDiv">
                 <picture>
-                  <source media="min-width:789px" srcSet={item.image.tablet} />
+                  <source media="min-width:789px" srcSet={item.image.desktop} />
                   <source
                     media="min-width:1440px"
                     srcSet={item.image.desktop}
@@ -353,7 +353,7 @@ const SingleProductContainer = styled.div`
         background: #f1f1f1;
 
         @media screen and (min-width: 768px) {
-          width: 223px;
+          width: 230px;
           height: 318px;
           border-radius: 8px;
         }

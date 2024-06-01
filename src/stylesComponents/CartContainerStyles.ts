@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const CartIContainer = styled.div`
   display: flex;
   width: 327px;
-  left: 2rem;
+  right: 2rem;
 
-  top: 10rem;
+  top: 0;
 
   border-radius: 8px;
   flex-direction: column;
@@ -17,16 +17,19 @@ export const CartIContainer = styled.div`
   align-items: center;
   padding-bottom: 3rem;
   @media screen and (min-width: 768px) {
-    top: 3rem;
-    left: 35rem;
     width: 377px;
   }
   .cartHeader {
     display: flex;
+
     width: 271px;
+
     justify-content: space-between;
-    padding-inline: 1rem;
+
     margin-top: 4rem;
+    @media screen and (min-width: 768px) {
+      width: 313px;
+    }
     & > h2 {
       color: #000;
       font-size: 18px;
@@ -46,7 +49,7 @@ export const CartIContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
-    width: 271px;
+    width: 295px;
     @media screen and (min-width: 768px) {
       width: 313px;
       gap: 2rem;

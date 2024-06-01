@@ -45,23 +45,28 @@ function SingleProduct() {
           {singleProductData?.new ? (
             <h3 className="newPRoduct">NEW PRODUCT</h3>
           ) : null}
-          <h2>{singleProductData?.name}</h2>
+          <h2 className="product_name">{singleProductData?.name}</h2>
           <p>{singleProductData?.description}</p>
           <h3 className="price">{formattedPrice}</h3>
           <AddToCartButtons singleProductData={singleProductData} />
         </div>
       </div>
-      <h2 className="featureTitle">FEATURES</h2>
-      <p>{singleProductData?.features}</p>
-
-      <div className="boxDiv">
-        <h2>IN THE BOX</h2>
+      <div className="features_box">
         <div>
-          {singleProductData?.includes.map((item) => (
-            <div key={Math.random()}>
-              <span>{`${item.quantity}x`}</span> <p>{item.item}</p>
-            </div>
-          ))}
+          <h2 className="featureTitle">FEATURES</h2>
+          <p>{singleProductData?.features}</p>
+        </div>
+
+        <div className="boxDiv">
+          <h2>IN THE BOX</h2>
+          <div>
+            {singleProductData?.includes.map((item) => (
+              <div key={Math.random()}>
+                <span className="orange">{`${item.quantity}x`}</span>{" "}
+                <span>{item.item}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -153,6 +158,7 @@ const SingleProductContainer = styled.div`
   padding: 2rem 2.5rem;
   gap: 2.4rem;
   position: relative;
+
   .product_text_content {
     display: flex;
     flex-direction: column;
@@ -161,9 +167,11 @@ const SingleProductContainer = styled.div`
 
     padding: 2rem 2.5rem;
     gap: 3rem;
+
     @media screen and (min-width: 768px) {
-      width: 339px;
+      width: 33.9rem;
     }
+
     .newPRoduct {
       align-self: flex-start;
       color: #d87d4a;
@@ -177,12 +185,15 @@ const SingleProductContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     @media screen and (min-width: 768px) {
       flex-direction: row;
       gap: 5rem;
     }
   }
   picture {
+    display: flex;
+    justify-content: center;
     img {
       @media screen and (min-width: 768px) {
         width: 281px;
@@ -221,7 +232,15 @@ const SingleProductContainer = styled.div`
     letter-spacing: 1.286px;
     text-transform: uppercase;
   }
-
+  .features_box {
+    @media screen and (min-width: 1440px) {
+      display: flex;
+      gap: 12rem;
+      p {
+        width: 635px;
+      }
+    }
+  }
   .boxDiv {
     margin-block: 8.8rem;
     width: 327px;
@@ -233,14 +252,22 @@ const SingleProductContainer = styled.div`
       width: 100%;
       flex-direction: row;
     }
-    h2 {
+    @media screen and (min-width: 1440px) {
+      flex-direction: column;
+    }
+
+    .product_name {
       margin-bottom: 2rem;
       @media screen and (min-width: 768px) {
         width: 339px;
       }
     }
-    span {
+    .orange {
       color: #d87d4a;
+    }
+    span {
+      color: #000;
+      opacity: 0.5;
       font-size: 15px;
       font-weight: 700;
       line-height: 25px;
@@ -330,21 +357,6 @@ const SingleProductContainer = styled.div`
       }
     }
     .imgDiv {
-      /* margin-block: 2rem;
-      width: 327px;
-      height: 130px;
-      border-radius: 8px;
-      background: #f1f1f1;
-     
-      align-items: center;
-      justify-content: center;
-
-      @media screen and (min-width: 768px) {
-        width: 223px;
-        height: 318px;
-        flex-shrink: 0;
-      } */
-
       picture {
         display: flex;
         align-items: center;

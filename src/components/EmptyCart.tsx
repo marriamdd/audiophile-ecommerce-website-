@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import { CartIContainer } from "../stylesComponents/CartContainerStyles";
+import { Audiophile_Context } from "../App";
 
 export default function EmptyCart() {
+  const { setShowCart } = useContext(Audiophile_Context);
   return (
     <CartIContainer
+      onClick={() => setShowCart(false)}
       style={{
         height: "20rem",
         textDecoration: "underline",

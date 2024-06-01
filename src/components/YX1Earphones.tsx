@@ -39,10 +39,16 @@ const YX1EarphonesStyles = styled.div`
   }
   h2 {
     color: #000;
+
     font-size: 28px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+    @media screen and (min-width: 1440px) {
+      font-size: 4rem;
+      line-height: 44px;
+      letter-spacing: 1.429px;
+    }
   }
   picture {
     img {
@@ -55,7 +61,8 @@ const YX1EarphonesStyles = styled.div`
       }
       @media screen and (min-width: 1440px) {
         width: 540px;
-        height: 320px;
+        height: 560px;
+        border-radius: 8px;
       }
     }
   }
@@ -70,6 +77,7 @@ const YX1EarphonesStyles = styled.div`
     align-items: center;
     justify-content: center;
     gap: 3rem;
+
     @media screen and (min-width: 768px) {
       width: 339px;
       height: 320px;

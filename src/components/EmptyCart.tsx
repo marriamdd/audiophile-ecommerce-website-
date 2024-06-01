@@ -2,8 +2,15 @@ import { CartIContainer } from "../stylesComponents/CartContainerStyles";
 
 export default function EmptyCart() {
   return (
-    <CartIContainer>
-      <h2>Empty Cart</h2>
+    <CartIContainer
+      style={{
+        height: "20rem",
+        textDecoration: "underline",
+        justifyContent: "flex-start",
+        paddingTop: "2rem",
+      }}
+    >
+      <span>Your cart is empty.</span>
     </CartIContainer>
   );
 }

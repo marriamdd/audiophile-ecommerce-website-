@@ -19,6 +19,7 @@ export const CartIContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 377px;
   }
+
   .cartHeader {
     display: flex;
 

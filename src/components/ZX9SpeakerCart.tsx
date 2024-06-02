@@ -27,14 +27,13 @@ function ZX9SpeakerCart() {
           Upgrade to premium speakers that are phenomenally built to deliver
           truly remarkable sound.
         </p>
+        <SeeProductComponent
+          to={`/single/ZX9 Speaker`}
+          backGround={"black"}
+          color={"white"}
+          border={"none"}
+        />
       </div>
-
-      <SeeProductComponent
-        to={`/single/ZX9 Speaker`}
-        backGround={"black"}
-        color={"white"}
-        border={"none"}
-      />
     </ZX9SpeakerCartContainer>
   );
 }
@@ -53,6 +52,11 @@ const ZX9SpeakerCartContainer = styled.div`
   @media screen and (min-width: 768px) {
     height: 720px;
   }
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+    width: 1110px;
+    height: 560px;
+  }
   picture {
     img {
       margin-top: 6rem;
@@ -65,11 +69,16 @@ const ZX9SpeakerCartContainer = styled.div`
       @media screen and (min-width: 1440px) {
         width: 410.234px;
         height: 493px;
+        margin-top: 9.3rem;
+        margin-inline: 13rem;
       }
     }
   }
   .circles_img_container {
     position: relative;
+    @media screen and (min-width: 1440px) {
+      width: 700px;
+    }
     .circle1 {
       position: absolute;
       width: 279px;
@@ -85,7 +94,8 @@ const ZX9SpeakerCartContainer = styled.div`
         top: -3rem;
         left: -13rem;
       }
-      @media screen and (min-width: 1140px) {
+      @media screen and (min-width: 1440px) {
+        display: none;
       }
     }
   }
@@ -104,6 +114,9 @@ const ZX9SpeakerCartContainer = styled.div`
       top: -6rem;
       right: -6rem;
       left: -17rem;
+    }
+    @media screen and (min-width: 1440px) {
+      display: none;
     }
   }
   .circle3 {
@@ -128,6 +141,11 @@ const ZX9SpeakerCartContainer = styled.div`
     justify-content: center;
     align-items: center;
     gap: 3rem;
+    @media screen and (min-width: 1440px) {
+      align-items: start;
+
+      gap: 4rem;
+    }
   }
   h2 {
     color: #fff;
@@ -143,6 +161,10 @@ const ZX9SpeakerCartContainer = styled.div`
       line-height: 58px;
       letter-spacing: 2px;
     }
+    @media screen and (min-width: 1440px) {
+      text-align: start;
+      width: 349px;
+    }
   }
 
   p {
@@ -153,6 +175,9 @@ const ZX9SpeakerCartContainer = styled.div`
     line-height: 25px;
     @media screen and (min-width: 768px) {
       width: 349px;
+    }
+    @media screen and (min-width: 1440px) {
+      text-align: start;
     }
   }
 `;

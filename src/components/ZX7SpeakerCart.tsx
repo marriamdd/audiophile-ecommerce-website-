@@ -11,7 +11,7 @@ function ZX7SpeakerCart() {
           srcSet="/assets/home/tablet/image-speaker-zx7.jpg"
         />
         <source
-          media="(min-width:1140px)"
+          media="(min-width:1440px)"
           srcSet="/assets/home/desktop/image-speaker-zx7.jpg"
         />
         <img
@@ -37,6 +37,7 @@ const ZX7SpeakerCartStyles = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
   h2 {
     position: absolute;
     top: 12rem;
@@ -46,16 +47,22 @@ const ZX7SpeakerCartStyles = styled.div`
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
+    @media screen and (min-width: 1440px) {
+      left: 15rem;
+    }
   }
   picture {
     img {
       width: 327px;
       height: 352px;
+      border-radius: 8px;
       @media screen and (min-width: 768px) {
         width: 689px;
         height: 320px;
       }
       @media screen and (min-width: 1440px) {
+        height: 320px;
+        width: 1110px;
       }
     }
   }
@@ -63,5 +70,8 @@ const ZX7SpeakerCartStyles = styled.div`
     position: absolute;
     top: 18rem;
     left: 3rem;
+    @media screen and (min-width: 1440px) {
+      left: 15rem;
+    }
   }
 `;

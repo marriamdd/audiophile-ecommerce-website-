@@ -37,6 +37,9 @@ const YX1EarphonesStyles = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
+  @media screen and (min-width: 1440px) {
+    width: 1110px;
+  }
   h2 {
     color: #000;
 
@@ -61,7 +64,7 @@ const YX1EarphonesStyles = styled.div`
       }
       @media screen and (min-width: 1440px) {
         width: 540px;
-        height: 560px;
+
         border-radius: 8px;
       }
     }
@@ -85,6 +88,7 @@ const YX1EarphonesStyles = styled.div`
     @media screen and (min-width: 1440px) {
       width: 540px;
       height: 320px;
+      align-items: start;
     }
   }
 `;

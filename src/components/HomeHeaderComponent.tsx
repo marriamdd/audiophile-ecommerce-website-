@@ -41,6 +41,8 @@ const HomeHeader = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    justify-content: start;
+    padding-left: 12rem;
     background-image: url(/assets/home/desktop/image-hero.jpg);
   }
   & > div {
@@ -51,6 +53,11 @@ const HomeHeader = styled.div`
     @media screen and (min-width: 768px) {
       width: 379px;
       height: 346px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 398px;
+      height: 346px;
+      align-items: flex-start;
     }
     h1 {
       width: 328px;
@@ -81,6 +88,9 @@ const HomeHeader = styled.div`
       margin-bottom: 4rem;
       @media screen and (min-width: 768px) {
         width: 396px;
+      }
+      @media screen and (min-width: 1440px) {
+        text-align: start;
       }
     }
   }

@@ -58,7 +58,7 @@ const CategoryContainer = styled.div`
   gap: 2rem;
 
   @media screen and (min-width: 1440px) {
-    margin-bottom: 5rem;
+    margin-bottom: 15rem;
   }
   .categoryTitle {
     display: flex;
@@ -97,7 +97,7 @@ const Picture = styled.picture<{ index: number }>`
     }
     @media screen and (min-width: 1440px) {
       margin-top: 8rem;
-      width: 630px;
+      width: 650px;
       height: 560px;
     }
   }
@@ -108,6 +108,7 @@ const Context = styled.div<{ index: number }>`
     height: 560px;
     display: flex;
     flex-direction: column;
+    gap: 4rem;
     align-items: start;
     justify-content: center;
     order: ${(props) => (props.index % 2 == 0 ? "2" : "1")};
@@ -124,6 +125,7 @@ const CategoryItemDiv = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     gap: 10rem;
+    margin-bottom: 5rem;
   }
 
   h3 {

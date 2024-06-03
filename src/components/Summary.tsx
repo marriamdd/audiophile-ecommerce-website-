@@ -22,6 +22,7 @@ export default function Summary() {
   };
   return (
     <SummaryStyles>
+      <h2>summary</h2>
       {cartItems.map((item) => (
         <div key={Math.random() * Math.random()} className="cartItem">
           <img src={item.img} alt="" />
@@ -48,7 +49,7 @@ export default function Summary() {
         </div>
         <div>
           <h3>GRAND TOTAL</h3>
-          <span>
+          <span style={{ color: "#D87D4A" }}>
             {formatPrice(grandTotal(totalPrice(), vat(totalPrice())))}
           </span>
         </div>
@@ -63,11 +64,35 @@ const SummaryStyles = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-
+  width: 330px;
   border-radius: 8px;
   background: #fff;
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  height: 100%;
+  @media screen and (min-width: 768px) {
+    width: 689px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 380px;
+    margin-top: 2rem;
+
+    flex-shrink: 0;
+  }
+
+  h2 {
+    align-self: flex-start;
+    padding-left: 3rem;
+    padding-bottom: 3rem;
+    padding-top: 1rem;
+  }
   .cartItem {
+    @media screen and (min-width: 768px) {
+      width: 623px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 330px;
+    }
   }
   .pricesContainer {
     width: 279px;
@@ -77,6 +102,9 @@ const SummaryStyles = styled.div`
     padding: 3rem 1rem 2rem;
     @media screen and (min-width: 768px) {
       width: 623px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 350px;
     }
     div {
       width: 100%;
@@ -119,6 +147,9 @@ const SummaryStyles = styled.div`
     font-weight: 700;
     line-height: 25px;
     opacity: 0.5;
+    @media screen and (min-width: 768px) {
+      margin-left: auto;
+    }
   }
   .price_name {
     display: flex;

@@ -8,7 +8,7 @@ import InputMask from "react-input-mask";
 import { Audiophile_Context } from "../App";
 import ThanksComponent from "../components/ThanksComponent";
 import Summary from "../components/Summary";
-
+import Shape from "../assets/Shape.svg";
 interface InputTypes {
   name: string;
   emailAddress: string;
@@ -93,197 +93,206 @@ export default function Checkout() {
 
   return (
     <CheckoutPage>
-      <div>
+      <div className="goBackDiv">
         {" "}
         <GoBackButton />
       </div>
 
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <h1>CHECKOUT</h1>
-        <Section>
-          <h2>Billing details</h2>
-          <div className="sideBySideDiv">
-            <InputContainer error={errors.name ? errors.name.message : ""}>
-              <div>
-                <label htmlFor="name">Name</label>
-                {errors.name && <p>{errors.name.message}</p>}
-              </div>
+      <div className="formAndSummary">
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <h1>CHECKOUT</h1>
+          <Section>
+            <h2>Billing details</h2>
+            <div className="sideBySideDiv">
+              <InputContainer error={errors.name ? errors.name.message : ""}>
+                <div>
+                  <label htmlFor="name">Name</label>
+                  {errors.name && <p>{errors.name.message}</p>}
+                </div>
 
-              <input
-                placeholder="Alexei Ward"
-                id="name"
-                {...register("name")}
-              />
-            </InputContainer>
-            <InputContainer
-              error={errors.emailAddress ? errors.emailAddress.message : ""}
-            >
-              <div>
-                <label htmlFor="emailAddress">Email Address</label>
-                {errors.emailAddress && <p>{errors.emailAddress.message}</p>}
-              </div>
+                <input
+                  placeholder="Alexei Ward"
+                  id="name"
+                  {...register("name")}
+                />
+              </InputContainer>
+              <InputContainer
+                error={errors.emailAddress ? errors.emailAddress.message : ""}
+              >
+                <div>
+                  <label htmlFor="emailAddress">Email Address</label>
+                  {errors.emailAddress && <p>{errors.emailAddress.message}</p>}
+                </div>
 
-              <input
-                placeholder="alexei@mail.com"
-                id="emailAddress"
-                {...register("emailAddress")}
-              />
-            </InputContainer>
-          </div>
-
-          <InputContainer
-            error={errors.phoneNumber ? errors.phoneNumber.message : ""}
-          >
-            <div>
-              <label htmlFor="phoneNumber">Phone Number</label>
-              {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
+                <input
+                  placeholder="alexei@mail.com"
+                  id="emailAddress"
+                  {...register("emailAddress")}
+                />
+              </InputContainer>
             </div>
 
-            <InputMask
-              {...register("phoneNumber")}
-              id="phoneNumber"
-              mask="+1 999-999-9999"
-              placeholder="+1 202-555-0136"
-              maskChar={""}
-            />
-          </InputContainer>
-        </Section>
-        <Section>
-          <h2>shipping info</h2>
-
-          <InputContainer
-            error={errors.yourAddress ? errors.yourAddress.message : ""}
-          >
-            <div className="yourAddressDiv">
-              <label htmlFor="yourAddress">Your Address</label>
-              {errors.yourAddress && <p>{errors.yourAddress.message}</p>}
-            </div>
-
-            <input
-              className="yourAddressInput"
-              placeholder="1137 Williams Avenue"
-              id="yourAddress"
-              {...register("yourAddress")}
-            />
-          </InputContainer>
-          <div className="sideBySideDiv">
             <InputContainer
-              error={errors.zipCode ? errors.zipCode.message : ""}
+              error={errors.phoneNumber ? errors.phoneNumber.message : ""}
             >
               <div>
-                <label htmlFor="zipCode">ZIP Code</label>
-                {errors.zipCode && <p>{errors.zipCode.message}</p>}
+                <label htmlFor="phoneNumber">Phone Number</label>
+                {errors.phoneNumber && <p>{errors.phoneNumber.message}</p>}
               </div>
 
-              <input
-                placeholder="10001"
-                id="zipCode"
-                {...register("zipCode")}
-              />
-            </InputContainer>
-
-            <InputContainer error={errors.city ? errors.city.message : ""}>
-              <div>
-                <label htmlFor="city">City</label>
-                {errors.city && <p>{errors.city.message}</p>}
-              </div>
-
-              <input placeholder="New York" id="city" {...register("city")} />
-            </InputContainer>
-          </div>
-          <InputContainer error={errors.country ? errors.country.message : ""}>
-            <div>
-              <label htmlFor="country">Country</label>
-              {errors.country && <p>{errors.country.message}</p>}
-            </div>
-
-            <input
-              placeholder="United States"
-              id="country"
-              {...register("country")}
-            />
-          </InputContainer>
-        </Section>
-        <Section className="sideBySideSection">
-          <div>
-            <h2>payment details</h2>
-            <div className="paymentErrorDiv">
-              <label>Payment Method</label>
-              {errors.paymentMethod && <p>{errors.paymentMethod.message}</p>}
-            </div>
-          </div>
-          <div className="checkboxContainerDiv">
-            <CheckBoxContainer onClick={() => setE_moneyGraph(true)}>
-              <input
-                id="e_Money"
-                type="radio"
-                value="e_Money"
-                {...register("paymentMethod")}
-              />
-
-              <label htmlFor="e_Money">E-Money </label>
-            </CheckBoxContainer>
-            <CheckBoxContainer
-              onClick={() => {
-                setE_moneyGraph(false);
-                // unregister("E_Money_Number");
-                // unregister("E_Money_Pin");
-              }}
-            >
-              <input
-                id="cash"
-                value="cash"
-                type="radio"
-                {...register("paymentMethod")}
-              />
-              <label htmlFor="cash">Cash on Delivery </label>
-            </CheckBoxContainer>
-          </div>
-        </Section>
-        {e_moneyGraph == true ? (
-          <Section className="sideBySideSection">
-            <InputContainer
-              error={errors.E_Money_Number ? errors.E_Money_Number.message : ""}
-            >
-              <div>
-                <label htmlFor="e_Money_number">e-Money Number</label>
-                {errors.E_Money_Number && (
-                  <p>{errors.E_Money_Number.message}</p>
-                )}
-              </div>
-
-              <input
-                placeholder="238521993"
-                id="e_Money_number"
-                {
-                  ...register("E_Money_Number")
-                  // paymentMethodWatch == "e_Money" && { required: "is required" }
-                }
-              />
-            </InputContainer>
-            <InputContainer
-              error={errors.E_Money_Pin ? errors.E_Money_Pin.message : ""}
-            >
-              <div>
-                <label htmlFor="e_Money_Pin">e-Money PIN</label>
-                {errors.E_Money_Pin && <p>{errors.E_Money_Pin.message}</p>}
-              </div>
-
-              <input
-                placeholder="6891"
-                id="e_Money_Pin"
-                {
-                  ...register("E_Money_Pin")
-                  // ,
-                  // paymentMethodWatch == "e_Money" && { required: "is required" }
-                }
+              <InputMask
+                {...register("phoneNumber")}
+                id="phoneNumber"
+                mask="+1 999-999-9999"
+                placeholder="+1 202-555-0136"
+                maskChar={""}
               />
             </InputContainer>
           </Section>
-        ) : null}
-        <Summary />
-      </Form>
+          <Section>
+            <h2>shipping info</h2>
 
+            <InputContainer
+              error={errors.yourAddress ? errors.yourAddress.message : ""}
+            >
+              <div className="yourAddressDiv">
+                <label htmlFor="yourAddress">Your Address</label>
+                {errors.yourAddress && <p>{errors.yourAddress.message}</p>}
+              </div>
+
+              <input
+                className="yourAddressInput"
+                placeholder="1137 Williams Avenue"
+                id="yourAddress"
+                {...register("yourAddress")}
+              />
+            </InputContainer>
+            <div className="sideBySideDiv">
+              <InputContainer
+                error={errors.zipCode ? errors.zipCode.message : ""}
+              >
+                <div>
+                  <label htmlFor="zipCode">ZIP Code</label>
+                  {errors.zipCode && <p>{errors.zipCode.message}</p>}
+                </div>
+
+                <input
+                  placeholder="10001"
+                  id="zipCode"
+                  {...register("zipCode")}
+                />
+              </InputContainer>
+
+              <InputContainer error={errors.city ? errors.city.message : ""}>
+                <div>
+                  <label htmlFor="city">City</label>
+                  {errors.city && <p>{errors.city.message}</p>}
+                </div>
+
+                <input placeholder="New York" id="city" {...register("city")} />
+              </InputContainer>
+            </div>
+            <InputContainer
+              error={errors.country ? errors.country.message : ""}
+            >
+              <div>
+                <label htmlFor="country">Country</label>
+                {errors.country && <p>{errors.country.message}</p>}
+              </div>
+
+              <input
+                placeholder="United States"
+                id="country"
+                {...register("country")}
+              />
+            </InputContainer>
+          </Section>
+          <Section className="sideBySideSection">
+            <div>
+              <h2>payment details</h2>
+              <div className="paymentErrorDiv">
+                <label>Payment Method</label>
+                {errors.paymentMethod && <p>{errors.paymentMethod.message}</p>}
+              </div>
+            </div>
+            <div className="checkboxContainerDiv">
+              <CheckBoxContainer onClick={() => setE_moneyGraph(true)}>
+                <input
+                  id="e_Money"
+                  type="radio"
+                  value="e_Money"
+                  {...register("paymentMethod")}
+                />
+
+                <label htmlFor="e_Money">E-Money </label>
+              </CheckBoxContainer>
+              <CheckBoxContainer
+                onClick={() => {
+                  setE_moneyGraph(false);
+                }}
+              >
+                <input
+                  id="cash"
+                  value="cash"
+                  type="radio"
+                  {...register("paymentMethod")}
+                />
+                <label htmlFor="cash">Cash on Delivery </label>
+              </CheckBoxContainer>
+            </div>
+          </Section>
+          {e_moneyGraph == true ? (
+            <Section
+              style={{ marginTop: "-4rem", paddingBottom: " 5rem" }}
+              className="sideBySideSection"
+            >
+              <InputContainer
+                error={
+                  errors.E_Money_Number ? errors.E_Money_Number.message : ""
+                }
+              >
+                <div>
+                  <label htmlFor="e_Money_number">e-Money Number</label>
+                  {errors.E_Money_Number && (
+                    <p>{errors.E_Money_Number.message}</p>
+                  )}
+                </div>
+
+                <input
+                  placeholder="238521993"
+                  id="e_Money_number"
+                  {...register("E_Money_Number")}
+                />
+              </InputContainer>
+              <InputContainer
+                error={errors.E_Money_Pin ? errors.E_Money_Pin.message : ""}
+              >
+                <div>
+                  <label htmlFor="e_Money_Pin">e-Money PIN</label>
+                  {errors.E_Money_Pin && <p>{errors.E_Money_Pin.message}</p>}
+                </div>
+
+                <input
+                  placeholder="6891"
+                  id="e_Money_Pin"
+                  {...register("E_Money_Pin")}
+                />
+              </InputContainer>
+            </Section>
+          ) : (
+            <div className="cashDiv" style={{ marginTop: "-3rem" }}>
+              <img src={Shape} alt="" />
+              <p>
+                The ‘Cash on Delivery’ option enables you to pay in cash when
+                our delivery courier arrives at your residence. Just make sure
+                your address is correct so that your order will not be
+                cancelled.
+              </p>
+            </div>
+          )}
+        </Form>
+        <Summary />
+      </div>
       <ThanksComponent />
     </CheckoutPage>
   );
@@ -296,9 +305,19 @@ const CheckoutPage = styled.div`
   align-items: center;
   justify-content: center;
   padding-top: 2rem;
-  & > div {
-    /* align-self: flex-start; */
-    /* padding-left: 4rem; */
+  margin-bottom: 8rem;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 12rem;
+  }
+  .goBackDiv {
+    align-self: flex-start;
+    padding-left: 4rem;
+  }
+  .formAndSummary {
+    @media screen and (min-width: 1440px) {
+      display: flex;
+      gap: 5rem;
+    }
   }
   .sideBySideDiv {
     display: flex;
@@ -312,8 +331,9 @@ const CheckoutPage = styled.div`
     }
   }
   .checkboxContainerDiv {
+    margin-bottom: 5rem;
     div {
-      margin-block: 1rem;
+      margin-block: 2rem;
     }
   }
   .sideBySideSection {
@@ -379,6 +399,7 @@ const Form = styled.form`
   margin-bottom: 3rem;
   border-radius: 8px;
   background: #fff;
+  gap: 2rem;
   @media screen and (min-width: 768px) {
     width: 689px;
   }
@@ -389,6 +410,18 @@ const Form = styled.form`
     font-size: 28px;
     font-weight: 700;
     letter-spacing: 1px;
+  }
+  .cashDiv {
+    color: #000;
+    font-size: 15px;
+    opacity: 0.5;
+    font-weight: 400;
+    line-height: 25px;
+    width: 90%;
+    padding-bottom: 5rem;
+    margin-top: 5rem;
+    display: flex;
+    gap: 3rem;
   }
 `;
 
@@ -424,6 +457,7 @@ const InputContainer = styled.div<{ error?: string }>`
     font-weight: 700;
     line-height: normal;
     letter-spacing: -0.214px;
+    margin-block: 1rem;
   }
   input {
     width: 280px;

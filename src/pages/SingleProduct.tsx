@@ -33,7 +33,7 @@ function SingleProduct() {
       {showCart && <CartContent />}
       <GoBackButton />
       <div className="product_container">
-        <picture>
+        <picture className="productPicture">
           <source
             media="(min-width:768px)"
             srcSet={singleProductData?.image.tablet}
@@ -170,7 +170,7 @@ const SingleProductContainer = styled.div`
       width: 1110px;
     }
   }
-  picture {
+  .productPicture {
     display: flex;
     justify-content: center;
     img {

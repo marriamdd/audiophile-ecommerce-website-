@@ -18,6 +18,9 @@ const GoBack = styled.h3`
   font-weight: 400;
   line-height: 25px;
   opacity: 0.5;
+  &:hover {
+    color: #d87d4a;
+  }
   @media screen and (min-width: 1440px) {
     margin-left: 26rem;
     transition: all 1s ease;

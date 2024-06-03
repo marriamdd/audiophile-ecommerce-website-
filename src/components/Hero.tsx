@@ -44,7 +44,7 @@ const HeroStyes = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     align-items: start;
-    width: 1440px;
+    /* width: 1440px; */
     height: 588px;
     gap: 5rem;
   }
@@ -58,13 +58,16 @@ const HeroStyes = styled.div`
     }
   }
   picture {
+    width: 32.7rem;
+
+    height: 25rem;
     @media screen and (min-width: 768px) {
       width: 689px;
       height: 320px;
     }
     @media screen and (min-width: 1440px) {
       order: 2;
-      width: 540px;
+      width: 600px;
       height: 588px;
     }
     img {
@@ -76,7 +79,7 @@ const HeroStyes = styled.div`
         height: 320px;
       }
       @media screen and (min-width: 1440px) {
-        width: 540px;
+        width: 600px;
         height: 588px;
       }
     }

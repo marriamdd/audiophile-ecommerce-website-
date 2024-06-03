@@ -14,9 +14,9 @@ const SeeProductComponent = ({
 }) => {
   return (
     <Button backGround={backGround} color={color} border={border}>
-      <div>
-        <Link to={`${to}`}>See Product</Link>
-      </div>
+      <Link to={`${to}`}>
+        <div>See Product</div>
+      </Link>
     </Button>
   );
 };

@@ -17,12 +17,14 @@ function YX1Earphones() {
       </picture>
       <div className="context">
         <h2>YX1 EARPHONES</h2>
-        <SeeProductComponent
-          to={`/single/ZX7 SPEAKER`}
-          backGround={"transparent"}
-          color={"black"}
-          border={"1px solid black"}
-        />
+        <div className="SeeProductComponentStyle">
+          <SeeProductComponent
+            to={`/single/ZX7 SPEAKER`}
+            backGround={"transparent"}
+            color={"black"}
+            border={"1px solid black"}
+          />
+        </div>
       </div>
     </YX1EarphonesStyles>
   );
@@ -39,6 +41,9 @@ const YX1EarphonesStyles = styled.div`
   }
   @media screen and (min-width: 1440px) {
     width: 1110px;
+    margin-top: 4rem;
+    margin-bottom: 10rem;
+    transition: margin-top 1s ease, margin-bottom 1s ease;
   }
   h2 {
     color: #000;
@@ -80,7 +85,7 @@ const YX1EarphonesStyles = styled.div`
     align-items: center;
     justify-content: center;
     gap: 3rem;
-
+    transition: gap 1s ease;
     @media screen and (min-width: 768px) {
       width: 339px;
       height: 320px;
@@ -89,6 +94,9 @@ const YX1EarphonesStyles = styled.div`
       width: 540px;
       height: 320px;
       align-items: start;
+      padding-left: 7rem;
+      gap: 5rem;
+      transition: gap 1s ease, padding-left 1s ease;
     }
   }
 `;

@@ -14,7 +14,9 @@ const SeeProductComponent = ({
 }) => {
   return (
     <Button backGround={backGround} color={color} border={border}>
-      <Link to={`${to}`}>See Product</Link>
+      <div>
+        <Link to={`${to}`}>See Product</Link>
+      </div>
     </Button>
   );
 };
@@ -23,16 +25,26 @@ const Button = styled.button<{
   color: string;
   border: string;
 }>`
-  width: 16rem;
-  height: 4.8rem;
+  div {
+    width: 16rem;
+    height: 5rem;
+    align-content: center;
+  }
   background: ${(props) => props.backGround && props.backGround};
   border: ${(props) => props.border && props.border};
+  width: 16rem;
+  height: 5rem;
   margin-bottom: 2rem;
-  @media screen and (min-width: 768px) {
-    width: 160px;
-    height: 48px;
+  :hover {
+    background: ${(props) =>
+      props.backGround == "transparent" ? "black" : "#4C4C4C"};
+    a {
+      color: white;
+    }
   }
-  & > a {
+
+  a {
+    text-decoration: none;
     color: ${(props) => props.color && props.color};
     font-size: 1.3rem;
     font-weight: 700;

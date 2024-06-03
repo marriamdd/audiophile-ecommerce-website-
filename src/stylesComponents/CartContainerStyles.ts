@@ -5,7 +5,7 @@ export const CartIContainer = styled.div`
   width: 327px;
   right: 2rem;
 
-  top: 0;
+  top: 9rem;
 
   border-radius: 8px;
   flex-direction: column;
@@ -18,6 +18,9 @@ export const CartIContainer = styled.div`
   padding-bottom: 3rem;
   @media screen and (min-width: 768px) {
     width: 377px;
+  }
+  @media screen and (min-width: 1440px) {
+    right: 5rem;
   }
 
   .cartHeader {
@@ -44,6 +47,7 @@ export const CartIContainer = styled.div`
       font-weight: 400;
       line-height: 25px;
       text-decoration-line: underline;
+      cursor: pointer;
     }
   }
   .cartItem {
@@ -103,13 +107,23 @@ export const CartIContainer = styled.div`
     left: 0rem;
     text-align: center;
     width: 40px;
+    cursor: pointer;
   }
   .plus {
+    cursor: pointer;
     position: absolute;
 
     right: 0rem;
     width: 40px;
     text-align: center;
+  }
+  .plus:hover {
+    color: #d87d4a;
+    opacity: 1;
+  }
+  .minus:hover {
+    color: #d87d4a;
+    opacity: 1;
   }
   .total {
     display: flex;
@@ -133,6 +147,7 @@ export const CartIContainer = styled.div`
     }
   }
   a {
+    cursor: pointer;
     width: 313px;
     height: 48px;
     background: #d87d4a;
@@ -143,6 +158,9 @@ export const CartIContainer = styled.div`
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
-    padding-block: 1rem;
+    padding-top: 1.5rem;
+  }
+  a:hover {
+    background: #fbaf85;
   }
 `;

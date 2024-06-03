@@ -14,17 +14,19 @@ function Hero() {
         />
         <img src="/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg" />
       </picture>
-      <h2>
-        Bringing you the <span>best</span> audio gear
-      </h2>
-      <p>
-        Located at the heart of New York City, Audiophile is the premier store
-        for high end headphones, earphones, speakers, and audio accessories. We
-        have a large showroom and luxury demonstration rooms available for you
-        to browse and experience a wide range of our products. Stop by our store
-        to meet some of the fantastic people who make Audiophile the best place
-        to buy your portable audio equipment.
-      </p>
+      <div className="context">
+        <h2>
+          Bringing you the <span>best</span> audio gear
+        </h2>
+        <p>
+          Located at the heart of New York City, Audiophile is the premier store
+          for high end headphones, earphones, speakers, and audio accessories.
+          We have a large showroom and luxury demonstration rooms available for
+          you to browse and experience a wide range of our products. Stop by our
+          store to meet some of the fantastic people who make Audiophile the
+          best place to buy your portable audio equipment.
+        </p>
+      </div>
     </HeroStyes>
   );
 }
@@ -38,8 +40,20 @@ const HeroStyes = styled.div`
   justify-content: center;
   gap: 3rem;
   margin-top: 2rem;
-
+  margin-bottom: 10rem;
+  @media screen and (min-width: 1440px) {
+    flex-direction: row;
+  }
+  .context {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 2rem;
+  }
   picture {
+    @media screen and (min-width: 1440px) {
+      order: 2;
+    }
     img {
       border-radius: 8px;
       width: 32.7rem;
@@ -49,8 +63,8 @@ const HeroStyes = styled.div`
         height: 320px;
       }
       @media screen and (min-width: 1440px) {
-        height: 540px;
-        width: 540px;
+        height: 560px;
+        width: 670px;
       }
     }
   }
@@ -69,6 +83,10 @@ const HeroStyes = styled.div`
       line-height: 44px;
       margin-top: 2rem;
     }
+    @media screen and (min-width: 1440px) {
+      width: 445px;
+      text-align: start;
+    }
     span {
       color: #d87d4a;
     }
@@ -85,6 +103,10 @@ const HeroStyes = styled.div`
     padding-bottom: 12rem;
     @media screen and (min-width: 768px) {
       width: 573px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 445px;
+      text-align: start;
     }
   }
 `;

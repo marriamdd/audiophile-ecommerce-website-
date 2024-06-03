@@ -98,7 +98,7 @@ const BlurDiv = styled.div`
   z-index: 99999;
   width: 100%;
   height: 100%;
-  top: 0;
+  top: 0rem;
 
   left: 0;
   right: 0;

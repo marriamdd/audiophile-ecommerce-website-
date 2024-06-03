@@ -6,6 +6,8 @@ import AddToCartButtons from "../components/AddToCartButtons";
 import GoBackButton from "../components/GoBackButton";
 import CartContent from "../components/CartContent";
 import CategoriesContainerComponent from "../components/CategoriesContainerComponent";
+import GalleryContainer from "../components/GalleryContainer";
+import YouMayAlsoLike from "../components/YouMayAlsoLike";
 
 function SingleProduct() {
   const { name } = useParams();
@@ -48,7 +50,9 @@ function SingleProduct() {
           <h2 className="product_name">{singleProductData?.name}</h2>
           <p>{singleProductData?.description}</p>
           <h3 className="price">{formattedPrice}</h3>
-          <AddToCartButtons singleProductData={singleProductData} />
+          <div className="addToCartButtons">
+            <AddToCartButtons singleProductData={singleProductData} />
+          </div>
         </div>
       </div>
       <div className="features_box">
@@ -59,7 +63,7 @@ function SingleProduct() {
 
         <div className="boxDiv">
           <h2>IN THE BOX</h2>
-          <div>
+          <div className="boxItems">
             {singleProductData?.includes.map((item) => (
               <div key={Math.random()}>
                 <span className="orange">{`${item.quantity}x`}</span>{" "}
@@ -70,78 +74,8 @@ function SingleProduct() {
         </div>
       </div>
 
-      <div className="galleryContainer">
-        <div>
-          <picture className="picture1">
-            <source
-              media="(min-width:768px)"
-              srcSet={singleProductData?.gallery.first.tablet}
-            />
-            <source
-              media="(min-width:1440px)"
-              srcSet={singleProductData?.gallery.first.desktop}
-            />
-            <img
-              className="child"
-              src={singleProductData?.gallery.first.mobile}
-              alt=""
-            />
-          </picture>
-          <picture className="picture2">
-            <source
-              media="(min-width:768px)"
-              srcSet={singleProductData?.gallery.second.tablet}
-            />
-            <source
-              media="(min-width:1440px)"
-              srcSet={singleProductData?.gallery.second.desktop}
-            />
-            <img
-              className="child"
-              src={singleProductData?.gallery.second.mobile}
-              alt=""
-            />
-          </picture>
-        </div>
-
-        <picture className="picture3">
-          <source
-            media="(min-width:768px)"
-            srcSet={singleProductData?.gallery.third.tablet}
-          />
-          <source
-            media="(min-width:1440px)"
-            srcSet={singleProductData?.gallery.third.desktop}
-          />
-          <img
-            className="child"
-            src={singleProductData?.gallery.third.mobile}
-            alt=""
-          />
-        </picture>
-      </div>
-      <div className="mayAlsoLikeContainer">
-        {" "}
-        <h2>YOU MAY ALSO LIKE</h2>
-        <div className="mayAlsoLikeItemsDiv">
-          {singleProductData?.others.map((item) => (
-            <div key={Math.random()} className="mayAlsoLikeItem">
-              <div className="imgDiv">
-                <picture>
-                  <source media="min-width:789px" srcSet={item.image.desktop} />
-                  <source
-                    media="min-width:1440px"
-                    srcSet={item.image.desktop}
-                  />
-                  <img src={item.image.mobile} alt="" />
-                </picture>
-              </div>
-              <h2>{item.name}</h2>
-              <button>See Product</button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <GalleryContainer singleProductData={singleProductData} />
+      <YouMayAlsoLike singleProductData={singleProductData} />
       <CategoriesContainerComponent position={"static"} zindex={0} />
     </SingleProductContainer>
   );
@@ -167,11 +101,46 @@ const SingleProductContainer = styled.div`
 
     padding: 2rem 2.5rem;
     gap: 3rem;
-
-    @media screen and (min-width: 768px) {
-      width: 33.9rem;
+    p {
+      @media screen and (min-width: 768px) {
+        width: 339px;
+      }
+      @media screen and (min-width: 1440px) {
+        width: 390px;
+      }
     }
-
+    h3 {
+      @media screen and (min-width: 768px) {
+        width: 339px;
+        margin-left: -3rem;
+      }
+      @media screen and (min-width: 1440px) {
+        width: 390px;
+        margin-left: 0rem;
+      }
+    }
+    h2 {
+      @media screen and (min-width: 768px) {
+        width: 339px;
+      }
+      @media screen and (min-width: 1440px) {
+        width: 390px;
+        margin-left: 0rem;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      width: 339px;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 445px;
+      align-items: flex-start;
+      transition: align-items 1s ease;
+    }
+    .addToCartButtons {
+      @media screen and (min-width: 768px) {
+        margin-right: 5rem;
+      }
+    }
     .newPRoduct {
       align-self: flex-start;
       color: #d87d4a;
@@ -188,7 +157,15 @@ const SingleProductContainer = styled.div`
     justify-content: center;
     @media screen and (min-width: 768px) {
       flex-direction: row;
-      gap: 5rem;
+      gap: 10rem;
+      transition: gap 1s ease;
+    }
+    @media screen and (min-width: 1100px) {
+      gap: 20rem;
+      transition: gap 1s ease;
+    }
+    @media screen and (min-width: 1440px) {
+      width: 1110px;
     }
   }
   picture {
@@ -201,8 +178,8 @@ const SingleProductContainer = styled.div`
         border-radius: 8px;
       }
       @media screen and (min-width: 1440px) {
-        width: 540px;
-        height: 560px;
+        width: 550px;
+        height: 590px;
       }
     }
   }
@@ -234,11 +211,22 @@ const SingleProductContainer = styled.div`
   }
   .features_box {
     @media screen and (min-width: 1440px) {
+      width: 1110px;
       display: flex;
-      gap: 12rem;
+      /* gap: 12rem; */
+      justify-content: space-between;
+      margin-bottom: 4rem;
       p {
         width: 635px;
       }
+    }
+  }
+  .boxItems {
+    @media screen and (min-width: 768px) {
+      margin-right: 15rem;
+    }
+    @media screen and (min-width: 1440px) {
+      margin-right: 0;
     }
   }
   .boxDiv {
@@ -251,9 +239,11 @@ const SingleProductContainer = styled.div`
     @media screen and (min-width: 768px) {
       width: 100%;
       flex-direction: row;
+      justify-content: space-between;
     }
     @media screen and (min-width: 1440px) {
       flex-direction: column;
+      width: 350px;
     }
 
     .product_name {
@@ -277,43 +267,6 @@ const SingleProductContainer = styled.div`
       gap: 1.2rem;
     }
   }
-  .galleryContainer {
-    /* width: 335.687px; */
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    div {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    @media screen and (min-width: 768px) {
-      flex-direction: row;
-    }
-    .picture1,
-    .picture2 {
-      img {
-        width: 327px;
-        height: 174px;
-        border-radius: 8px;
-        @media screen and (min-width: 768px) {
-          width: 277px;
-          height: 174px;
-        }
-      }
-    }
-    .picture3 {
-      img {
-        width: 327px;
-        height: 368px;
-        border-radius: 8px;
-        @media screen and (min-width: 768px) {
-          width: 395px;
-          height: 368px;
-        }
-      }
-    }
-  }
 
   .featureTitle {
     align-self: flex-start;
@@ -321,77 +274,5 @@ const SingleProductContainer = styled.div`
     font-size: 2.4rem;
     line-height: 3.6rem;
     letter-spacing: 0.857px;
-  }
-  .mayAlsoLikeContainer {
-    margin-block: 3rem;
-    h2 {
-      color: #000;
-      text-align: center;
-      font-family: Manrope;
-      font-size: 24px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 36px;
-      letter-spacing: 0.857px;
-      text-transform: uppercase;
-      margin-bottom: 4rem;
-      @media screen and (min-width: 768px) {
-        font-size: 32px;
-        letter-spacing: 1.143px;
-      }
-    }
-    .mayAlsoLikeItem {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-    }
-    .mayAlsoLikeItemsDiv {
-      display: flex;
-      flex-direction: column;
-      @media screen and (min-width: 768px) {
-        flex-direction: row;
-
-        gap: 2rem;
-      }
-    }
-    .imgDiv {
-      picture {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-block: 2rem;
-        background: #f1f1f1;
-
-        @media screen and (min-width: 768px) {
-          width: 230px;
-          height: 318px;
-          border-radius: 8px;
-        }
-        img {
-          width: 327px;
-          height: 120px;
-          border-radius: 8px;
-          @media screen and (min-width: 768px) {
-            width: 230.124px;
-            height: 172px;
-            flex-shrink: 0;
-          }
-        }
-      }
-    }
-    button {
-      width: 160px;
-      height: 48px;
-      color: #fff;
-      background: #d87d4a;
-      border: none;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
-    }
   }
 `;

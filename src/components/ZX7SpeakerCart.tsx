@@ -49,6 +49,7 @@ const ZX7SpeakerCartStyles = styled.div`
     text-transform: uppercase;
     @media screen and (min-width: 1440px) {
       left: 15rem;
+      transition: top 1s ease, left 1s ease;
     }
   }
   picture {
@@ -72,6 +73,7 @@ const ZX7SpeakerCartStyles = styled.div`
     left: 3rem;
     @media screen and (min-width: 1440px) {
       left: 15rem;
+      transition: left 1s ease;
     }
   }
 `;

@@ -14,15 +14,17 @@ export default function Footer() {
         }
       }}
     >
-      <Link to={"/"}>
-        <img src="/assets/shared/desktop/logo.svg" />
-      </Link>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/HeadPhones">HeadPhones</Link>
-        <Link to="/Speakers">Speakers</Link>
-        <Link to="/EarPhones">EarPhones</Link>
-      </nav>
+      <div className="audio_nav">
+        <Link to={"/"}>
+          <img src="/assets/shared/desktop/logo.svg" />
+        </Link>
+        <nav>
+          <Link to="/">Home</Link>
+          <Link to="/HeadPhones">HeadPhones</Link>
+          <Link to="/Speakers">Speakers</Link>
+          <Link to="/EarPhones">EarPhones</Link>
+        </nav>
+      </div>
       <p>
         Audiophile is an all in one stop to fulfill your audio needs. We're a
         small team of music lovers and sound specialists who are devoted to
@@ -48,7 +50,7 @@ export default function Footer() {
   );
 }
 const FooterStyled = styled.footer`
-  height: 654px;
+  height: 365px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -56,15 +58,30 @@ const FooterStyled = styled.footer`
   align-items: center;
   gap: 4.8rem;
   background: #101010;
+  padding-inline: 2rem;
+
   @media screen and (min-width: 678px) {
     align-items: flex-start;
+
     padding-left: 3rem;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-inline: 25rem;
   }
   h2 {
     color: white;
     font-weight: bold;
     cursor: pointer;
     font-size: 28px;
+  }
+  .audio_nav {
+    display: flex;
+    flex-direction: column;
+    @media screen and (min-width: 1440px) {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   p {
     color: #fff;
@@ -73,7 +90,7 @@ const FooterStyled = styled.footer`
     font-weight: 400;
     line-height: 25px;
     opacity: 0.5;
-    padding-inline: 1rem;
+
     text-align: start;
   }
   nav {
@@ -88,20 +105,25 @@ const FooterStyled = styled.footer`
     line-height: 25px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    @media screen and (min-width: 768px) {
+    a {
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
+    a:hover {
+      color: #d87d4a;
+    }
+    @media screen and (min-width: 668px) {
       flex-direction: row;
     }
+    @media screen and (min-width: 1440px) {
+    }
   }
-  a {
-    cursor: pointer;
-    text-decoration: none;
-    color: white;
-  }
+
   div {
     display: flex;
     gap: 2rem;
-    @media screen and (min-width: 768px) {
-      padding-inline: 1rem;
+    @media screen and (min-width: 668px) {
     }
   }
   .nav_copyright_container {
@@ -110,7 +132,11 @@ const FooterStyled = styled.footer`
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    @media screen and (min-width: 768px) {
+    span:hover {
+      fill: #d87d4a;
+      cursor: pointer;
+    }
+    @media screen and (min-width: 668px) {
       flex-direction: row;
       width: 100%;
       justify-content: space-between;

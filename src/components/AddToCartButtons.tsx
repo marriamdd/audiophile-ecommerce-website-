@@ -94,7 +94,7 @@ export const AddToCartButtonsStyle = styled.div`
     height: 48px;
     position: absolute;
     padding-inline: 1.4rem;
-
+    cursor: pointer;
     padding-top: 1.4rem;
     left: 0.4rem;
   }
@@ -102,10 +102,18 @@ export const AddToCartButtonsStyle = styled.div`
     height: 48px;
     width: 40px;
     position: absolute;
-
+    cursor: pointer;
     padding-top: 1.4rem;
     padding-inline: 1.4rem;
     right: 0.4rem;
+  }
+  .plus:hover {
+    opacity: 1;
+    color: #d87d4a;
+  }
+  .minus:hover {
+    opacity: 1;
+    color: #d87d4a;
   }
   button {
     background: #d87d4a;
@@ -117,5 +125,8 @@ export const AddToCartButtonsStyle = styled.div`
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
+  }
+  button:hover {
+    background: #fbaf85;
   }
 `;

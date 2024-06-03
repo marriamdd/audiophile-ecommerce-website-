@@ -51,6 +51,7 @@ const ZX9SpeakerCartContainer = styled.div`
   margin-bottom: 5rem;
   @media screen and (min-width: 768px) {
     height: 720px;
+    width: 689px;
   }
   @media screen and (min-width: 1440px) {
     flex-direction: row;

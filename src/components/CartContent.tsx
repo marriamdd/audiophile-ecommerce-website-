@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Audiophile_Context } from "../App";
 import styled from "styled-components";
 import EmptyCart from "./EmptyCart";

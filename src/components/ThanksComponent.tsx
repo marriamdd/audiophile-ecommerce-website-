@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
 import { Audiophile_Context } from "../App";
 import { useNavigate } from "react-router-dom";

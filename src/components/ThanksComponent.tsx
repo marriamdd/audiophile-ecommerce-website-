@@ -18,34 +18,36 @@ export default function ThanksComponent() {
             <img src="/assets/checkout/icon-order-confirmation.svg" alt="" />
             <h2>THANK YOU FOR YOUR ORDER</h2>
             <p>You will receive an email confirmation shortly.</p>
-            <div className="itemsDiv">
-              <CartItemsStyles
-                key={Math.random() * Math.random()}
-                className="cartItem"
-              >
-                <img src={cartItems[0].img} alt="" />
-                <div className="price_name">
-                  <h3>{cartItems[0].name}</h3>
-                  <span style={{ opacity: "0.5", fontSize: "14px" }}>
-                    {formatPrice(cartItems[0].price)}
+            <div className="contentSideBySide">
+              <div className="itemsDiv">
+                <CartItemsStyles
+                  key={Math.random() * Math.random()}
+                  className="cartItem"
+                >
+                  <img src={cartItems[0].img} alt="" />
+                  <div className="price_name">
+                    <h3>{cartItems[0].name}</h3>
+                    <span style={{ opacity: "0.5", fontSize: "14px" }}>
+                      {formatPrice(cartItems[0].price)}
+                    </span>
+                  </div>
+
+                  <span className="quantity">{`x${cartItems[0].quantity}`}</span>
+                </CartItemsStyles>
+
+                <div className="line"></div>
+                {cartItems.length > 1 && (
+                  <span className="otherItemsLeft">
+                    and {cartItems.length - 1} other item(s)
                   </span>
-                </div>
-
-                <span className="quantity">{`x${cartItems[0].quantity}`}</span>
-              </CartItemsStyles>
-
-              <div className="line"></div>
-              {cartItems.length > 1 && (
-                <span className="otherItemsLeft">
-                  and {cartItems.length - 1} other item(s)
+                )}
+              </div>
+              <div className="grandTotalDiv">
+                <h3>GRAND TOTAL</h3>
+                <span>
+                  {formatPrice(grandTotal(totalPrice(), vat(totalPrice())))}
                 </span>
-              )}
-            </div>
-            <div className="grandTotalDiv">
-              <h3>GRAND TOTAL</h3>
-              <span>
-                {formatPrice(grandTotal(totalPrice(), vat(totalPrice())))}
-              </span>
+              </div>
             </div>
             <button onClick={() => navigate("/")}>back to home</button>
           </ThanksStyles>
@@ -81,11 +83,24 @@ const ThanksStyles = styled.div`
   justify-content: center;
   border-radius: 8px;
   background: #fff;
+  @media screen and (min-width: 768px) {
+    width: 540px;
+  }
   .cartItem {
-    padding-block: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
     padding-right: 2rem;
     width: 263px;
     border-radius: 8px;
+    @media screen and (min-width: 768px) {
+      width: 444px;
+    }
+  }
+  .contentSideBySide {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      border-radius: 8px;
+    }
   }
   .grandTotalDiv {
     width: 263px;
@@ -98,6 +113,14 @@ const ThanksStyles = styled.div`
     gap: 1rem;
     padding-left: 2rem;
     padding-top: 2rem;
+    @media screen and (min-width: 768px) {
+      width: 198px;
+      margin-top: 0rem;
+      height: 145px;
+      border-radius: 0px 8px 8px 0px;
+      padding-left: 3rem;
+      padding-top: 4rem;
+    }
     h3 {
       color: #fff;
       font-size: 15px;
@@ -124,6 +147,9 @@ const ThanksStyles = styled.div`
     width: 263px;
     border-radius: 8px;
     background: #f1f1f1;
+    @media screen and (min-width: 768px) {
+      border-radius: 8px 0px 0px 8px;
+    }
   }
   .line {
     width: 75%;
@@ -143,6 +169,9 @@ const ThanksStyles = styled.div`
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+      width: 444px;
+    }
   }
   & > img {
     align-self: flex-start;
@@ -158,6 +187,10 @@ const ThanksStyles = styled.div`
     line-height: 28px;
     letter-spacing: 0.857px;
     text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+      width: 284px;
+      margin-left: -16.5rem;
+    }
   }
   p {
     color: #000;
@@ -168,5 +201,8 @@ const ThanksStyles = styled.div`
     line-height: 25px;
     opacity: 0.5;
     width: 263px;
+    @media screen and (min-width: 768px) {
+      width: 444px;
+    }
   }
 `;

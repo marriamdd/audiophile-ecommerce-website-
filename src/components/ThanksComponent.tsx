@@ -26,7 +26,9 @@ export default function ThanksComponent() {
                 <img src={cartItems[0].img} alt="" />
                 <div className="price_name">
                   <h3>{cartItems[0].name}</h3>
-                  <span>{formatPrice(cartItems[0].price)}</span>
+                  <span style={{ opacity: "0.5", fontSize: "14px" }}>
+                    {formatPrice(cartItems[0].price)}
+                  </span>
                 </div>
 
                 <span className="quantity">{`x${cartItems[0].quantity}`}</span>
@@ -39,9 +41,9 @@ export default function ThanksComponent() {
                 </span>
               )}
             </div>
-            <div>
+            <div className="grandTotalDiv">
               <h3>GRAND TOTAL</h3>
-              <span style={{ color: "#D87D4A" }}>
+              <span>
                 {formatPrice(grandTotal(totalPrice(), vat(totalPrice())))}
               </span>
             </div>
@@ -84,6 +86,31 @@ const ThanksStyles = styled.div`
     padding-right: 2rem;
     width: 263px;
     border-radius: 8px;
+  }
+  .grandTotalDiv {
+    width: 263px;
+    margin-top: -2.5rem;
+    height: 92px;
+    border-radius: 0px 0px 8px 8px;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    h3 {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 25px;
+      opacity: 0.5;
+    }
+    span {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
   }
   .otherItemsLeft {
     align-self: center;

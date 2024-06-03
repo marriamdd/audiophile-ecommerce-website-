@@ -50,7 +50,6 @@ export default function Footer() {
   );
 }
 const FooterStyled = styled.footer`
-  height: 365px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -59,14 +58,15 @@ const FooterStyled = styled.footer`
   gap: 4.8rem;
   background: #101010;
   padding-inline: 2rem;
-
+  padding-block: 2rem;
   @media screen and (min-width: 678px) {
     align-items: flex-start;
-
+    height: 365px;
     padding-left: 3rem;
   }
   @media screen and (min-width: 1440px) {
     padding-inline: 25rem;
+    height: 365px;
   }
   h2 {
     color: white;

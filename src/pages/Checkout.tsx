@@ -91,15 +91,17 @@ export default function Checkout() {
   }, [e_moneyGraph]);
 
   console.log(errors);
+  console.log("k");
   const { cartItems } = useContext(Audiophile_Context);
   useEffect(() => {
     if (cartItems.length === 0) {
       navigate(-1);
     }
   }, [cartItems, navigate]);
+  console.log(errors);
   return (
     <>
-      {cartItems.length > 0 && (
+      {cartItems.length > 0 ? (
         <CheckoutPage>
           <div className="goBackDiv">
             {" "}
@@ -314,12 +316,12 @@ export default function Checkout() {
                   </p>
                 </div>
               )}
+              <Summary />
             </Form>
-            <Summary />
           </div>
           <ThanksComponent />
         </CheckoutPage>
-      )}
+      ) : null}
     </>
   );
 }

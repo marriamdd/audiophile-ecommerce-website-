@@ -1,38 +1,28 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Audiophile_Context } from "../App";
+import { useCartFunctions } from "./useCartsFunctions";
 
 export default function Summary() {
   const { cartItems } = useContext(Audiophile_Context);
-  const formatPrice = (price: number) => {
-    return `$${(price / 1000).toFixed(3)}`;
-  };
-  const totalPrice = () => {
-    let total = 0;
-    cartItems.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    return total;
-  };
-  const vat = (totalPrice: number) => {
-    return totalPrice * 0.18;
-  };
-  const grandTotal = (total: number, vat: number) => {
-    return total + vat + 50;
-  };
+
+  const { formatPrice, totalPrice, vat, grandTotal } = useCartFunctions();
   return (
     <SummaryStyles>
       <h2>summary</h2>
       {cartItems.map((item) => (
-        <div key={Math.random() * Math.random()} className="cartItem">
+        <CartItemsStyles
+          key={Math.random() * Math.random()}
+          className="cartItem"
+        >
           <img src={item.img} alt="" />
           <div className="price_name">
             <h3>{item.name}</h3>
-            <span>{formatPrice(item.price)}</span>
+            <span className="itemPrice">{formatPrice(item.price)}</span>
           </div>
 
           <span className="quantity">{`x${item.quantity}`}</span>
-        </div>
+        </CartItemsStyles>
       ))}
       <div className="pricesContainer">
         <div>
@@ -54,10 +44,63 @@ export default function Summary() {
           </span>
         </div>
       </div>
-      <Continue_pay type="submit" value={"CONTINUE & PAY"} />
+      <Continue_pay
+        onClick={() => console.log("clicked")}
+        type="submit"
+        value={"CONTINUE & PAY"}
+      />
     </SummaryStyles>
   );
 }
+export const CartItemsStyles = styled.div`
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    width: 623px;
+  }
+  @media screen and (min-width: 1440px) {
+    width: 330px;
+  }
+  .price_name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .quantity {
+    border: none;
+    color: #000;
+    text-align: right;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 25px;
+    opacity: 0.5;
+    @media screen and (min-width: 768px) {
+      margin-left: auto;
+    }
+  }
+  img {
+    border-radius: 8px;
+    width: 64px;
+    height: 64px;
+  }
+  span {
+    color: #000;
+    text-align: right;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .itemPrice {
+    color: #000;
+    font-size: 14px;
+    opacity: 0.5;
+    font-weight: 700;
+    line-height: 25px; /* 178.571% */
+  }
+`;
+
 const SummaryStyles = styled.div`
   padding-inline: 1rem;
   padding-block: 2rem;
@@ -86,20 +129,14 @@ const SummaryStyles = styled.div`
     padding-bottom: 3rem;
     padding-top: 1rem;
   }
-  .cartItem {
-    @media screen and (min-width: 768px) {
-      width: 623px;
-    }
-    @media screen and (min-width: 1440px) {
-      width: 330px;
-    }
-  }
+
   .pricesContainer {
     width: 279px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 3rem 1rem 2rem;
+    gap: 1rem;
     @media screen and (min-width: 768px) {
       width: 623px;
     }
@@ -113,49 +150,19 @@ const SummaryStyles = styled.div`
     }
     h3 {
       color: #000;
-      font-family: Manrope;
+      opacity: 0.5;
       font-size: 15px;
       font-style: normal;
       font-weight: 400;
-      line-height: 25px; /* 166.667% */
+      line-height: 25px;
     }
     span {
       color: #000;
       text-align: right;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 700;
       text-transform: uppercase;
     }
-  }
-  div {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-  div {
-    img {
-      border-radius: 8px;
-      width: 64px;
-      height: 64px;
-    }
-  }
-  .quantity {
-    border: none;
-    color: #000;
-    text-align: right;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 25px;
-    opacity: 0.5;
-    @media screen and (min-width: 768px) {
-      margin-left: auto;
-    }
-  }
-  .price_name {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
   }
 `;
 const Continue_pay = styled.input`
@@ -169,4 +176,8 @@ const Continue_pay = styled.input`
   font-weight: 700;
   letter-spacing: 1px;
   border: none;
+  cursor: pointer;
+  &:hover {
+    background: #fbaf85;
+  }
 `;

@@ -6,7 +6,7 @@ import Speakers from "./pages/Speakers";
 import SingleProduct from "./pages/SingleProduct";
 import Header from "./components/Header";
 import Data from "./data.json";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { IProduct } from "./types/Types";
 import Footer from "./components/Footer";
 import Checkout from "./pages/Checkout";
@@ -62,7 +62,11 @@ function App() {
   const [showCart, setShowCart] = useState(false);
   const [showCheckOut, setShowCheckOut] = useState(false);
   const [quantity, setQuantity] = useState(1);
-
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      setShowCheckOut(true);
+    }
+  }, []);
   console.log(cartItems);
 
   return (

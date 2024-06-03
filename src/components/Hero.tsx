@@ -43,16 +43,29 @@ const HeroStyes = styled.div`
   margin-bottom: 10rem;
   @media screen and (min-width: 1440px) {
     flex-direction: row;
+    align-items: start;
+    width: 1440px;
+    height: 588px;
+    gap: 5rem;
   }
   .context {
     display: flex;
     flex-direction: column;
     gap: 4rem;
     margin-top: 2rem;
+    @media screen and (min-width: 1440px) {
+      margin-top: 10rem;
+    }
   }
   picture {
+    @media screen and (min-width: 768px) {
+      width: 689px;
+      height: 320px;
+    }
     @media screen and (min-width: 1440px) {
       order: 2;
+      width: 540px;
+      height: 588px;
     }
     img {
       border-radius: 8px;
@@ -63,8 +76,8 @@ const HeroStyes = styled.div`
         height: 320px;
       }
       @media screen and (min-width: 1440px) {
-        height: 560px;
-        width: 670px;
+        width: 540px;
+        height: 588px;
       }
     }
   }

@@ -8,6 +8,7 @@ import CartContent from "../components/CartContent";
 import CategoriesContainerComponent from "../components/CategoriesContainerComponent";
 import GalleryContainer from "../components/GalleryContainer";
 import YouMayAlsoLike from "../components/YouMayAlsoLike";
+import Hero from "../components/Hero";
 
 function SingleProduct() {
   const { name } = useParams();
@@ -77,6 +78,7 @@ function SingleProduct() {
       <GalleryContainer singleProductData={singleProductData} />
       <YouMayAlsoLike singleProductData={singleProductData} />
       <CategoriesContainerComponent position={"static"} zindex={0} />
+      <Hero />
     </SingleProductContainer>
   );
 }

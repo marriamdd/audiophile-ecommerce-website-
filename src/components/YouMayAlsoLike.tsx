@@ -31,6 +31,9 @@ export default function YouMayAlsoLike({
 
 const MayAlsoLikeContainer = styled.div`
   margin-block: 3rem;
+  @media screen and (min-width: 1440px) {
+    margin-block: 14rem;
+  }
   h2 {
     color: #000;
     text-align: center;
@@ -76,6 +79,10 @@ const MayAlsoLikeContainer = styled.div`
         height: 318px;
         border-radius: 8px;
       }
+      @media screen and (min-width: 1440px) {
+        width: 350px;
+        height: 318px;
+      }
       img {
         width: 327px;
         height: 120px;
@@ -84,6 +91,10 @@ const MayAlsoLikeContainer = styled.div`
           width: 230.124px;
           height: 172px;
           flex-shrink: 0;
+        }
+        @media screen and (min-width: 1440px) {
+          width: 350px;
+          height: 318px;
         }
       }
     }

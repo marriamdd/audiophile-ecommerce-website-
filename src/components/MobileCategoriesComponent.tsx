@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import arrow from "../assets/icon-arrow-right.svg";
 interface IMobileCategoriesProps {
   title: string;
   link: string;
@@ -24,11 +24,7 @@ const MobileCategoriesComponent: React.FC<IMobileCategoriesProps> = ({
         <Link to={link}>
           SHOP{" "}
           <span>
-            <img
-              className="arrow"
-              src="assets/shared/desktop/icon-arrow-right.svg"
-              alt=""
-            />
+            <img className="arrow" src={arrow} alt="" />
           </span>
         </Link>
       </div>
@@ -85,7 +81,11 @@ const CategoriesStyles = styled.div<{ height: string; width: string }>`
     .arrow {
       width: 5px;
       height: 10px;
+      padding-top: 0.2rem;
       align-items: center;
+    }
+    a:hover {
+      color: orange;
     }
   }
   .category_img {

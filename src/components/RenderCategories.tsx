@@ -21,14 +21,24 @@ const RenderCategories = ({ category }: { category: string }) => {
           <CategoryItemDiv key={index}>
             <Picture index={index}>
               <source
+                width={"540px"}
+                height={" 560px"}
+                media="(min-width:1440px)"
+                srcSet={item.categoryImage.desktop}
+              />
+              <source
+                width={"689px"}
+                height={"352px"}
                 media="(min-width:768px)"
                 srcSet={item.categoryImage.tablet}
               />
-              <source
-                media="(min-width:1140px)"
-                srcSet={item.categoryImage.desktop}
+
+              <img
+                width={"327px"}
+                height={"352px"}
+                srcSet={item.categoryImage.mobile}
+                alt={`${category}category image`}
               />
-              <img srcSet={item.categoryImage.mobile} alt="" />
             </Picture>
             <Context index={index}>
               {item.new ? <h3>NEW PRODUCT</h3> : null}
@@ -82,23 +92,12 @@ const CategoryContainer = styled.div`
 `;
 const Picture = styled.picture<{ index: number }>`
   @media screen and (min-width: 1440px) {
-    order: ${(props) => (props.index % 2 == 0 ? "1" : "2")};
+    order: ${(props) => (props.index % 2 == 0 ? "2" : "1")};
   }
   img {
-    width: 327px;
-    height: 352px;
     border-radius: 8px;
     background: #f1f1f1;
     margin-top: 3rem;
-    @media screen and (min-width: 768px) {
-      width: 689px;
-      height: 352px;
-    }
-    @media screen and (min-width: 1440px) {
-      margin-top: 8rem;
-      width: 650px;
-      height: 560px;
-    }
   }
 `;
 const Context = styled.div<{ index: number }>`

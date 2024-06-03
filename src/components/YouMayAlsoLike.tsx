@@ -15,9 +15,25 @@ export default function YouMayAlsoLike({
           <div key={Math.random()} className="mayAlsoLikeItem">
             <div className="imgDiv">
               <picture>
-                <source media="min-width:789px" srcSet={item.image.desktop} />
-                <source media="min-width:1440px" srcSet={item.image.desktop} />
-                <img src={item.image.mobile} alt="" />
+                <source
+                  width={"350px"}
+                  height={"318px"}
+                  media="(min-width:1440px)"
+                  srcSet={item.image.desktop}
+                />
+                <source
+                  width={"230.124px"}
+                  height={"318px"}
+                  media="(min-width:789px)"
+                  srcSet={item.image.desktop}
+                />
+
+                <img
+                  width={"327px"}
+                  height={"120px"}
+                  src={item.image.mobile}
+                  alt=""
+                />
               </picture>
             </div>
             <h2>{item.name}</h2>
@@ -72,30 +88,8 @@ const MayAlsoLikeContainer = styled.div`
       align-items: center;
       justify-content: center;
       margin-block: 2rem;
-      background: #f1f1f1;
-
-      @media screen and (min-width: 768px) {
-        width: 230px;
-        height: 318px;
-        border-radius: 8px;
-      }
-      @media screen and (min-width: 1440px) {
-        width: 350px;
-        height: 318px;
-      }
       img {
-        width: 327px;
-        height: 120px;
         border-radius: 8px;
-        @media screen and (min-width: 768px) {
-          width: 230.124px;
-          height: 172px;
-          flex-shrink: 0;
-        }
-        @media screen and (min-width: 1440px) {
-          width: 350px;
-          height: 318px;
-        }
       }
     }
   }

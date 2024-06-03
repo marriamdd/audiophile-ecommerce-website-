@@ -7,14 +7,21 @@ function ZX7SpeakerCart() {
       <h2>ZX7 SPEAKER</h2>
       <picture>
         <source
-          media="(min-width:768px)"
-          srcSet="/assets/home/tablet/image-speaker-zx7.jpg"
-        />
-        <source
+          width={"1110px"}
+          height={"320px"}
           media="(min-width:1440px)"
           srcSet="/assets/home/desktop/image-speaker-zx7.jpg"
         />
+        <source
+          width={"689px"}
+          height={"320px"}
+          media="(min-width:768px)"
+          srcSet="/assets/home/tablet/image-speaker-zx7.jpg"
+        />
+
         <img
+          width={"327px"}
+          height={"352px"}
           src="/assets/home/mobile/image-speaker-zx7.jpg"
           alt="image-speaker-zx7"
         />
@@ -54,17 +61,7 @@ const ZX7SpeakerCartStyles = styled.div`
   }
   picture {
     img {
-      width: 327px;
-      height: 352px;
       border-radius: 8px;
-      @media screen and (min-width: 768px) {
-        width: 689px;
-        height: 320px;
-      }
-      @media screen and (min-width: 1440px) {
-        height: 320px;
-        width: 1110px;
-      }
     }
   }
   .SeeProductComponentDiv {

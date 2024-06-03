@@ -5,14 +5,23 @@ function Hero() {
     <HeroStyes>
       <picture>
         <source
-          media="(min-width:768px)"
-          srcSet="/assets/shared/tablet/image-best-gear.jpg"
-        />
-        <source
+          width={"540px"}
+          height={"588px"}
           media="(min-width:1440px)"
           srcSet="/assets/shared/desktop/image-best-gear.jpg"
         />
-        <img src="/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg" />
+        <source
+          width={"689px"}
+          height={"320px"}
+          media="(min-width:768px)"
+          srcSet="/assets/shared/tablet/image-best-gear.jpg"
+        />
+
+        <img
+          width={"327px"}
+          height={"250px"}
+          src="/assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg"
+        />
       </picture>
       <div className="context">
         <h2>
@@ -44,9 +53,9 @@ const HeroStyes = styled.div`
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     align-items: start;
-    /* width: 1440px; */
+    /* width: 1110px; */
     height: 588px;
-    gap: 5rem;
+    gap: 10rem;
   }
   .context {
     display: flex;
@@ -58,30 +67,11 @@ const HeroStyes = styled.div`
     }
   }
   picture {
-    width: 32.7rem;
-
-    height: 25rem;
-    @media screen and (min-width: 768px) {
-      width: 689px;
-      height: 320px;
+    img {
+      border-radius: 8px;
     }
     @media screen and (min-width: 1440px) {
       order: 2;
-      width: 600px;
-      height: 588px;
-    }
-    img {
-      border-radius: 8px;
-      width: 32.7rem;
-      height: 25rem;
-      @media screen and (min-width: 768px) {
-        width: 689px;
-        height: 320px;
-      }
-      @media screen and (min-width: 1440px) {
-        width: 600px;
-        height: 588px;
-      }
     }
   }
   h2 {

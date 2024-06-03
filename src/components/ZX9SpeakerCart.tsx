@@ -18,7 +18,12 @@ function ZX9SpeakerCart() {
           srcSet="/assets/home/tablet/image-speaker-zx9.png"
         />
 
-        <img src="/assets/home/mobile/image-speaker-zx9.png" alt="" />
+        <img
+          width="172.248px"
+          height="207px"
+          src="/assets/home/mobile/image-speaker-zx9.png"
+          alt=""
+        />
       </picture>
 
       <div className="content">
@@ -48,7 +53,7 @@ const ZX9SpeakerCartContainer = styled.div`
 
   background-image: url("/assets/home/desktop/pattern-circles.svg");
   background-repeat: no-repeat;
-  background-position: top -130px right -110px;
+  background-position: top -130px right -130px;
   background-size: cover;
   border-radius: 8px;
   background-color: #d87d4a;

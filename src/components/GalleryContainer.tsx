@@ -9,48 +9,70 @@ export default function GalleryContainer({
   return (
     <GalleryContainerStyles>
       <div>
-        <picture className="picture1">
+        <picture>
           <source
-            media="(min-width:768px)"
-            srcSet={singleProductData?.gallery.first.tablet}
-          />
-          <source
+            width="445px"
+            height="280px"
             media="(min-width:1440px)"
             srcSet={singleProductData?.gallery.first.desktop}
           />
+          <source
+            width="277px"
+            height="174px"
+            media="(min-width:768px)"
+            srcSet={singleProductData?.gallery.first.tablet}
+          />
+
           <img
+            width="327px"
+            height="174px"
             className="child"
             src={singleProductData?.gallery.first.mobile}
             alt=""
           />
         </picture>
-        <picture className="picture2">
+        <picture>
           <source
-            media="(min-width:768px)"
-            srcSet={singleProductData?.gallery.second.tablet}
-          />
-          <source
+            width="445px"
+            height="280px"
             media="(min-width:1440px)"
             srcSet={singleProductData?.gallery.second.desktop}
           />
+          <source
+            width="277px"
+            height="174px"
+            media="(min-width:768px)"
+            srcSet={singleProductData?.gallery.second.tablet}
+          />
+
           <img
+            width=" 327px"
+            height="174px"
             className="child"
             src={singleProductData?.gallery.second.mobile}
-            alt=""
+            alt="product"
           />
         </picture>
       </div>
 
-      <picture className="picture3">
+      <picture>
         <source
-          media="(min-width:768px)"
-          srcSet={singleProductData?.gallery.third.tablet}
-        />
-        <source
+          width="635px"
+          height="592px"
           media="(min-width:1440px)"
           srcSet={singleProductData?.gallery.third.desktop}
         />
+
+        <source
+          width="395px"
+          height="368px"
+          media="(min-width:768px)"
+          srcSet={singleProductData?.gallery.third.tablet}
+        />
+
         <img
+          width="327px"
+          height="368px"
           className="child"
           src={singleProductData?.gallery.third.mobile}
           alt=""
@@ -71,35 +93,9 @@ const GalleryContainerStyles = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
-  .picture1,
-  .picture2 {
+  picture {
     img {
-      width: 327px;
-      height: 174px;
       border-radius: 8px;
-      @media screen and (min-width: 768px) {
-        width: 277px;
-        height: 174px;
-      }
-      @media screen and (min-width: 1440px) {
-        width: 445px;
-        height: 280px;
-      }
-    }
-  }
-  .picture3 {
-    img {
-      width: 327px;
-      height: 368px;
-      border-radius: 8px;
-      @media screen and (min-width: 768px) {
-        width: 395px;
-        height: 368px;
-      }
-      @media screen and (min-width: 1440px) {
-        width: 635px;
-        height: 592px;
-      }
     }
   }
 `;

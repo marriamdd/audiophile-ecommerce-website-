@@ -6,14 +6,22 @@ function YX1Earphones() {
     <YX1EarphonesStyles>
       <picture>
         <source
-          media="(min-width:768px)"
-          srcSet="/assets/home/tablet/image-earphones-yx1.jpg"
-        />
-        <source
+          width={"540px"}
           media="(min-width:1440px)"
           srcSet="/assets/home/desktop/image-earphones-yx1.jpg"
         />
-        <img src="assets/product-yx1-earphones/mobile/image-gallery-2.jpg" />
+        <source
+          width={"339px"}
+          height={"320px"}
+          media="(min-width:768px)"
+          srcSet="/assets/home/tablet/image-earphones-yx1.jpg"
+        />
+
+        <img
+          width={"327px"}
+          height={"200px"}
+          src="assets/product-yx1-earphones/mobile/image-gallery-2.jpg"
+        />
       </picture>
       <div className="context">
         <h2>YX1 EARPHONES</h2>
@@ -60,18 +68,7 @@ const YX1EarphonesStyles = styled.div`
   }
   picture {
     img {
-      width: 327px;
-      height: 200px;
       border-radius: 8px;
-      @media screen and (min-width: 768px) {
-        width: 339px;
-        height: 320px;
-      }
-      @media screen and (min-width: 1440px) {
-        width: 540px;
-
-        border-radius: 8px;
-      }
     }
   }
 

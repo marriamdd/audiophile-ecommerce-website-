@@ -34,16 +34,24 @@ function SingleProduct() {
       <div className="product_container">
         <picture className="productPicture">
           <source
-            media="(min-width:768px)"
-            srcSet={singleProductData?.image.tablet}
-          />
-          <source
             width="540px"
             height="560px"
             media="(min-width:1440px)"
             srcSet={singleProductData?.image.desktop}
           />
-          <img src={singleProductData?.image.mobile} alt="" />
+          <source
+            width="281px"
+            height=" 480px"
+            media="(min-width:768px)"
+            srcSet={singleProductData?.image.tablet}
+          />
+
+          <img
+            width=" 327px"
+            height="327px"
+            src={singleProductData?.image.mobile}
+            alt="product"
+          />
         </picture>
 
         <div className="product_text_content">
@@ -176,11 +184,7 @@ const SingleProductContainer = styled.div`
     display: flex;
     justify-content: center;
   }
-  img {
-    width: 32.7rem;
-    height: 32.7rem;
-    flex-shrink: 0;
-  }
+
   h2 {
     font-size: 2.8rem;
     font-weight: 700;

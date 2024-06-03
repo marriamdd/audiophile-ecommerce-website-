@@ -4,7 +4,7 @@ import styled from "styled-components";
 import EmptyCart from "./EmptyCart";
 import { CartIContainer } from "../stylesComponents/CartContainerStyles";
 import { Link } from "react-router-dom";
-import { useCartFunctions } from "./useCartsFunctions";
+import { useCartFunctions } from "../hooks/useCartsFunctions";
 
 export default function CartContent() {
   const { setCartItems, cartItems, setShowCart } =

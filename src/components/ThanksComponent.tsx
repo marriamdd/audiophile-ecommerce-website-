@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Audiophile_Context } from "../App";
 import { useNavigate } from "react-router-dom";
 import { CartItemsStyles } from "./Summary";
-import { useCartFunctions } from "./useCartsFunctions";
+import { useCartFunctions } from "../hooks/useCartsFunctions";
 export default function ThanksComponent() {
   const {
     setCartItems,

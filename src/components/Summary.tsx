@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import { Audiophile_Context } from "../App";
-import { useCartFunctions } from "./useCartsFunctions";
+import { useCartFunctions } from "../hooks/useCartsFunctions";
 
 export default function Summary() {
   const { cartItems } = useContext(Audiophile_Context);

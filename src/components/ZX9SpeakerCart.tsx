@@ -4,22 +4,22 @@ import SeeProductComponent from "./SeeProductComponent";
 function ZX9SpeakerCart() {
   return (
     <ZX9SpeakerCartContainer>
-      <div className="circles_img_container">
-        <div className="circle1"></div>
-        <div className="circle2"></div>
-        <div className="circle3"></div>
-        <picture>
-          <source
-            media="(min-width:768px)"
-            srcSet="/assets/home/tablet/image-speaker-zx9.png"
-          />
-          <source
-            media="(min-width:1140px)"
-            srcSet="/assets/home/desktop/image-speaker-zx9.png"
-          />
-          <img src="/assets/home/mobile/image-speaker-zx9.png" alt="" />
-        </picture>
-      </div>
+      <picture>
+        <source
+          width="410px"
+          height="493px"
+          media="(min-width:1440px)"
+          srcSet="/assets/home/tablet/image-speaker-zx9.png"
+        />
+        <source
+          width="197.212px"
+          height="237px"
+          media="(min-width:768px)"
+          srcSet="/assets/home/tablet/image-speaker-zx9.png"
+        />
+
+        <img src="/assets/home/mobile/image-speaker-zx9.png" alt="" />
+      </picture>
 
       <div className="content">
         <h2>ZX9 SPEAKER</h2>
@@ -45,97 +45,38 @@ const ZX9SpeakerCartContainer = styled.div`
   align-items: center;
   gap: 2.6rem;
   width: 90%;
-  /* height: 600px; */
+
+  background-image: url("/assets/home/desktop/pattern-circles.svg");
+  background-repeat: no-repeat;
+  background-position: top -130px right -110px;
+  background-size: cover;
   border-radius: 8px;
-  background: #d87d4a;
+  background-color: #d87d4a;
   margin-bottom: 5rem;
   @media screen and (min-width: 768px) {
     height: 720px;
     width: 689px;
+
+    background-position: top -180px right -30px;
   }
   @media screen and (min-width: 1440px) {
     flex-direction: row;
     width: 1110px;
     height: 560px;
+    background-position: top -180px right 240px;
   }
   picture {
     img {
       margin-top: 6rem;
-      width: 165px;
-      height: 203px;
-      @media screen and (min-width: 768px) {
-        width: 197.212px;
-        height: 237px;
-      }
+
       @media screen and (min-width: 1440px) {
-        width: 410.234px;
-        height: 493px;
-        margin-top: 9.3rem;
+        margin-top: 8.7rem;
         margin-inline: 13rem;
       }
     }
   }
-  .circles_img_container {
-    position: relative;
-    @media screen and (min-width: 1440px) {
-      width: 700px;
-    }
-    .circle1 {
-      position: absolute;
-      width: 279px;
-      height: 279px;
-      border-radius: 279px;
-      border: 1px solid #fff;
-      opacity: 0.2;
-      top: 2.1rem;
-      left: -6rem;
-      @media screen and (min-width: 768px) {
-        width: 472px;
-        height: 472px;
-        top: -3rem;
-        left: -13rem;
-      }
-      @media screen and (min-width: 1440px) {
-        display: none;
-      }
-    }
-  }
-  .circle2 {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border-radius: 279px;
-    border: 1px solid #fff;
-    opacity: 0.2;
-    top: 0rem;
-    left: -8rem;
-    @media screen and (min-width: 768px) {
-      width: 542px;
-      height: 542px;
-      top: -6rem;
-      right: -6rem;
-      left: -17rem;
-    }
-    @media screen and (min-width: 1440px) {
-      display: none;
-    }
-  }
-  .circle3 {
-    display: none;
-    @media screen and (min-width: 768px) {
-      display: flex;
-      position: absolute;
-      /* width: 944px; */
-      /* height: 944px; */ //ჰეითს როცა ვაბრუნებ ზემოთ ფარავს რახან აბსოლიტია დავუყოო
-      border-radius: 944px;
-      border: 1px solid #fff;
-      opacity: 0.2;
-      top: -26rem;
-      left: -39rem;
-    }
-  }
+
   .content {
-    /* margin-top: 35rem; */
     margin-top: 5rem;
     display: flex;
     flex-direction: column;

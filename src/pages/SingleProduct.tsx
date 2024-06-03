@@ -38,11 +38,14 @@ function SingleProduct() {
             srcSet={singleProductData?.image.tablet}
           />
           <source
+            width="540px"
+            height="560px"
             media="(min-width:1440px)"
             srcSet={singleProductData?.image.desktop}
           />
           <img src={singleProductData?.image.mobile} alt="" />
         </picture>
+
         <div className="product_text_content">
           {singleProductData?.new ? (
             <h3 className="newPRoduct">NEW PRODUCT</h3>
@@ -172,17 +175,6 @@ const SingleProductContainer = styled.div`
   .productPicture {
     display: flex;
     justify-content: center;
-    img {
-      @media screen and (min-width: 768px) {
-        width: 28.1rem;
-        height: 48rem;
-        border-radius: 0.8rem;
-      }
-      @media screen and (min-width: 1440px) {
-        width: 55rem;
-        height: 59rem;
-      }
-    }
   }
   img {
     width: 32.7rem;

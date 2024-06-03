@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { CartItemsStyles } from "./Summary";
 import { useCartFunctions } from "./useCartsFunctions";
 export default function ThanksComponent() {
-  const { thanksComponent, setThanksComponent, cartItems } =
+  const { thanksComponent, setThanksComponent, cartItems, setShowCart } =
     useContext(Audiophile_Context);
   const { formatPrice, totalPrice, vat, grandTotal } = useCartFunctions();
   const navigate = useNavigate();
@@ -66,7 +66,14 @@ export default function ThanksComponent() {
                 </span>
               </div>
             </div>
-            <button onClick={() => navigate("/")}>back to home</button>
+            <button
+              onClick={() => {
+                navigate("/");
+                setShowCart(false);
+              }}
+            >
+              back to home
+            </button>
           </ThanksStyles>
         </>
       )}
@@ -86,7 +93,7 @@ const BlurDiv = styled.div`
   right: 0;
 `;
 const ItemDiv = styled.div<{ index: number; showHoleCart: boolean }>`
-  display: ${(props) => (props.index == 1 ? "flex" : "none")};
+  display: ${(props) => (props.index == 0 ? "flex" : "none")};
   display: ${(props) => props.showHoleCart && "flex"};
   width: 198px;
 
@@ -111,6 +118,7 @@ const ThanksStyles = styled.div`
   background: #fff;
   @media screen and (min-width: 768px) {
     width: 540px;
+    transition: width 1s ease;
   }
 
   .cartItem {
@@ -146,7 +154,7 @@ const ThanksStyles = styled.div`
     @media screen and (min-width: 768px) {
       width: 198px;
       margin-top: 0rem;
-      /* height: 145px; */
+      height: 100%;
       border-radius: 0px 8px 8px 0px;
       padding-left: 3rem;
       padding-top: 4rem;

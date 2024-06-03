@@ -67,6 +67,7 @@ export const CartItemsStyles = styled.div`
   .price_name {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
     gap: 1rem;
   }
@@ -79,9 +80,7 @@ export const CartItemsStyles = styled.div`
     line-height: 25px;
     opacity: 0.5;
     margin-left: auto;
-    @media screen and (min-width: 768px) {
-      margin-left: auto;
-    }
+    align-self: center;
   }
   img {
     border-radius: 8px;

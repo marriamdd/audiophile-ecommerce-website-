@@ -52,5 +52,8 @@ const Button = styled.button<{
     text-transform: uppercase;
     text-decoration: none;
   }
+  a:hover {
+    color: white;
+  }
 `;
 export default SeeProductComponent;

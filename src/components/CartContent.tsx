@@ -4,22 +4,13 @@ import styled from "styled-components";
 import EmptyCart from "./EmptyCart";
 import { CartIContainer } from "../stylesComponents/CartContainerStyles";
 import { Link } from "react-router-dom";
+import { useCartFunctions } from "./useCartsFunctions";
 
 export default function CartContent() {
   const { setCartItems, cartItems, setShowCart } =
     useContext(Audiophile_Context);
+  const { formatPrice, totalPrice } = useCartFunctions();
 
-  const formatPrice = (price: number) => {
-    return `$${(price / 1000).toFixed(3)}`;
-  };
-
-  const totalPrice = () => {
-    let total = 0;
-    cartItems.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    return total;
-  };
   const handleRemoveAll = () => {
     setCartItems([]);
   };

@@ -44,11 +44,7 @@ export default function Summary() {
           </span>
         </div>
       </div>
-      <Continue_pay
-        onClick={() => console.log("clicked")}
-        type="submit"
-        value={"CONTINUE & PAY"}
-      />
+      <Continue_pay type="submit" value={"CONTINUE & PAY"} />
     </SummaryStyles>
   );
 }

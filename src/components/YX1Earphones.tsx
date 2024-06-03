@@ -19,7 +19,7 @@ function YX1Earphones() {
         <h2>YX1 EARPHONES</h2>
         <div className="SeeProductComponentStyle">
           <SeeProductComponent
-            to={`/single/ZX7 SPEAKER`}
+            to={`/single/ZX7 Speaker`}
             backGround={"transparent"}
             color={"black"}
             border={"1px solid black"}

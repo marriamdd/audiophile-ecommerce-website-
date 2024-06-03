@@ -56,6 +56,8 @@ export const CartItemsStyles = styled.div`
   display: flex;
   gap: 2rem;
   align-items: center;
+  margin-bottom: 1rem;
+  width: 256px;
   @media screen and (min-width: 768px) {
     width: 623px;
   }
@@ -76,6 +78,7 @@ export const CartItemsStyles = styled.div`
     font-weight: 700;
     line-height: 25px;
     opacity: 0.5;
+    margin-left: auto;
     @media screen and (min-width: 768px) {
       margin-left: auto;
     }

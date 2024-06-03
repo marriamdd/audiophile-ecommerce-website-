@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { Audiophile_Context } from "../App";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ export default function ThanksComponent() {
     useContext(Audiophile_Context);
   const { formatPrice, totalPrice, vat, grandTotal } = useCartFunctions();
   const navigate = useNavigate();
+  const [showHoleCart, setShowHoleCart] = useState(false);
   return (
     <>
       {thanksComponent && (
@@ -24,21 +25,37 @@ export default function ThanksComponent() {
                   key={Math.random() * Math.random()}
                   className="cartItem"
                 >
-                  <img src={cartItems[0].img} alt="" />
-                  <div className="price_name">
-                    <h3>{cartItems[0].name}</h3>
-                    <span style={{ opacity: "0.5", fontSize: "14px" }}>
-                      {formatPrice(cartItems[0].price)}
-                    </span>
-                  </div>
-
-                  <span className="quantity">{`x${cartItems[0].quantity}`}</span>
+                  {cartItems.map((item, index) => (
+                    <ItemDiv
+                      showHoleCart={showHoleCart}
+                      index={index}
+                      key={index}
+                    >
+                      <img src={item.img} alt="" />
+                      <div style={{ display: "flex", gap: "2rem" }}>
+                        <div className="price_name">
+                          <h3>{item.name}</h3>
+                          <span style={{ opacity: "0.5", fontSize: "14px" }}>
+                            {formatPrice(item.price)}
+                          </span>
+                        </div>
+                        <span className="quantity">{`x${item.quantity}`}</span>
+                      </div>
+                    </ItemDiv>
+                  ))}
                 </CartItemsStyles>
 
                 <div className="line"></div>
                 {cartItems.length > 1 && (
-                  <span className="otherItemsLeft">
-                    and {cartItems.length - 1} other item(s)
+                  <span
+                    onClick={() => {
+                      setShowHoleCart(!showHoleCart);
+                    }}
+                    className="otherItemsLeft"
+                  >
+                    {showHoleCart
+                      ? `View less`
+                      : `and ${cartItems.length - 1} other item(s)`}
                   </span>
                 )}
               </div>
@@ -68,6 +85,15 @@ const BlurDiv = styled.div`
   left: 0;
   right: 0;
 `;
+const ItemDiv = styled.div<{ index: number; showHoleCart: boolean }>`
+  display: ${(props) => (props.index == 1 ? "flex" : "none")};
+  display: ${(props) => props.showHoleCart && "flex"};
+  width: 198px;
+
+  gap: 2rem;
+  flex-shrink: 0;
+  transition: display 2s ease;
+`;
 const ThanksStyles = styled.div`
   width: 327px;
   top: 5rem;
@@ -86,17 +112,21 @@ const ThanksStyles = styled.div`
   @media screen and (min-width: 768px) {
     width: 540px;
   }
+
   .cartItem {
     padding-top: 3rem;
     padding-bottom: 2rem;
     padding-right: 2rem;
     width: 263px;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
     @media screen and (min-width: 768px) {
-      width: 444px;
+      /* width: 444px; */
     }
   }
   .contentSideBySide {
+    height: 100%;
     @media screen and (min-width: 768px) {
       display: flex;
       border-radius: 8px;
@@ -104,8 +134,8 @@ const ThanksStyles = styled.div`
   }
   .grandTotalDiv {
     width: 263px;
-    margin-top: -2.5rem;
     height: 92px;
+
     border-radius: 0px 0px 8px 8px;
     background: #000;
     display: flex;
@@ -116,7 +146,7 @@ const ThanksStyles = styled.div`
     @media screen and (min-width: 768px) {
       width: 198px;
       margin-top: 0rem;
-      height: 145px;
+      /* height: 145px; */
       border-radius: 0px 8px 8px 0px;
       padding-left: 3rem;
       padding-top: 4rem;
@@ -137,6 +167,15 @@ const ThanksStyles = styled.div`
   }
   .otherItemsLeft {
     align-self: center;
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.214px;
+    padding-block: 2rem;
+    cursor: pointer;
+  }
+  .otherItemsLeft:hover {
+    color: #d87d4a;
   }
   .itemsDiv {
     display: flex;

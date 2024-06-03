@@ -5,8 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { CartItemsStyles } from "./Summary";
 import { useCartFunctions } from "./useCartsFunctions";
 export default function ThanksComponent() {
-  const { thanksComponent, setThanksComponent, cartItems, setShowCart } =
-    useContext(Audiophile_Context);
+  const {
+    setCartItems,
+    thanksComponent,
+    setThanksComponent,
+    cartItems,
+    setShowCart,
+  } = useContext(Audiophile_Context);
   const { formatPrice, totalPrice, vat, grandTotal } = useCartFunctions();
   const navigate = useNavigate();
   const [showHoleCart, setShowHoleCart] = useState(false);
@@ -70,6 +75,7 @@ export default function ThanksComponent() {
               onClick={() => {
                 navigate("/");
                 setShowCart(false);
+                setCartItems([]);
               }}
             >
               back to home

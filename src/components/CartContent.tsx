@@ -32,7 +32,7 @@ export default function CartContent() {
       )
     );
   };
-  console.log(cartItems);
+
   return (
     <div className="cartComponent">
       <BlurDiv onClick={() => setShowCart(false)}></BlurDiv>

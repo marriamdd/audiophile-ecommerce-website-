@@ -9,7 +9,6 @@ const RenderCategories = ({ category }: { category: string }) => {
   const reversedData = [...data].reverse();
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log("sheicvala");
   }, [category]);
   return (
     <CategoryContainer>

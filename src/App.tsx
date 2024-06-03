@@ -67,7 +67,6 @@ function App() {
       setShowCheckOut(true);
     }
   }, []);
-  console.log(cartItems);
 
   return (
     <>

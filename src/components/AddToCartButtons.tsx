@@ -50,7 +50,7 @@ const AddToCartButtons = ({
   const handleIncreaseQuantity = () => {
     setQuantity((prev) => prev + 1);
   };
-  console.log(quantity);
+
   return (
     <AddToCartButtonsStyle>
       <div>

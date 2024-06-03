@@ -15,7 +15,6 @@ function SingleProduct() {
   const { data, showCart, setShowCart } = useContext(Audiophile_Context);
   const singleProductData = data.find((item) => item.name == name);
 
-  console.log(singleProductData);
   let formattedPrice = "";
   if (singleProductData?.price) {
     formattedPrice = `$${(singleProductData?.price / 1000).toFixed(3)}`;
@@ -105,36 +104,36 @@ const SingleProductContainer = styled.div`
     gap: 3rem;
     p {
       @media screen and (min-width: 768px) {
-        width: 339px;
+        width: 33.9rem;
       }
       @media screen and (min-width: 1440px) {
-        width: 390px;
+        width: 39rem;
       }
     }
     h3 {
       @media screen and (min-width: 768px) {
-        width: 339px;
+        width: 33.9rem;
         margin-left: -3rem;
       }
       @media screen and (min-width: 1440px) {
-        width: 390px;
+        width: 39rem;
         margin-left: 0rem;
       }
     }
     h2 {
       @media screen and (min-width: 768px) {
-        width: 339px;
+        width: 33.9rem;
       }
       @media screen and (min-width: 1440px) {
-        width: 390px;
+        width: 39.9rem;
         margin-left: 0rem;
       }
     }
     @media screen and (min-width: 768px) {
-      width: 339px;
+      width: 33.9rem;
     }
     @media screen and (min-width: 1440px) {
-      width: 445px;
+      width: 44.5rem;
       align-items: flex-start;
       transition: align-items 1s ease;
     }
@@ -146,9 +145,9 @@ const SingleProductContainer = styled.div`
     .newPRoduct {
       align-self: flex-start;
       color: #d87d4a;
-      font-size: 14px;
+      font-size: 1.4rem;
       font-weight: 400;
-      letter-spacing: 10px;
+      letter-spacing: 1rem;
       text-transform: uppercase;
     }
   }
@@ -167,7 +166,7 @@ const SingleProductContainer = styled.div`
       transition: gap 1s ease;
     }
     @media screen and (min-width: 1440px) {
-      width: 1110px;
+      width: 111rem;
     }
   }
   .productPicture {
@@ -175,51 +174,51 @@ const SingleProductContainer = styled.div`
     justify-content: center;
     img {
       @media screen and (min-width: 768px) {
-        width: 281px;
-        height: 480px;
-        border-radius: 8px;
+        width: 28.1rem;
+        height: 48rem;
+        border-radius: 0.8rem;
       }
       @media screen and (min-width: 1440px) {
-        width: 550px;
-        height: 590px;
+        width: 55rem;
+        height: 59rem;
       }
     }
   }
   img {
-    width: 327px;
-    height: 327px;
+    width: 32.7rem;
+    height: 32.7rem;
     flex-shrink: 0;
   }
   h2 {
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.1rem;
     text-transform: uppercase;
   }
   p {
     opacity: 0.5;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 25px;
+    line-height: 2.5rem;
     white-space: pre-line;
   }
   .price {
     align-self: flex-start;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: 1.286px;
     text-transform: uppercase;
   }
   .features_box {
     @media screen and (min-width: 1440px) {
-      width: 1110px;
+      width: 111rem;
       display: flex;
       /* gap: 12rem; */
       justify-content: space-between;
       margin-bottom: 4rem;
       p {
-        width: 635px;
+        width: 63.5rem;
       }
     }
   }
@@ -233,7 +232,7 @@ const SingleProductContainer = styled.div`
   }
   .boxDiv {
     margin-block: 8.8rem;
-    width: 327px;
+    width: 32.7rem;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -245,13 +244,13 @@ const SingleProductContainer = styled.div`
     }
     @media screen and (min-width: 1440px) {
       flex-direction: column;
-      width: 350px;
+      width: 35rem;
     }
 
     .product_name {
       margin-bottom: 2rem;
       @media screen and (min-width: 768px) {
-        width: 339px;
+        width: 33.9rem;
       }
     }
     .orange {
@@ -260,9 +259,9 @@ const SingleProductContainer = styled.div`
     span {
       color: #000;
       opacity: 0.5;
-      font-size: 15px;
+      font-size: 1.5rem;
       font-weight: 700;
-      line-height: 25px;
+      line-height: 2.5rem;
     }
     div div {
       display: flex;

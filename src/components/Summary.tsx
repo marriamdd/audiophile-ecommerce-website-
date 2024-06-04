@@ -95,7 +95,7 @@ export const CartItemsStyles = styled.div`
     font-size: 1.4rem;
     opacity: 0.5;
     font-weight: 700;
-    line-height: 25px; /* 178.571% */
+    line-height: 25px;
   }
 `;
 
@@ -110,7 +110,7 @@ const SummaryStyles = styled.div`
   background: #fff;
   margin-bottom: 5rem;
   padding-bottom: 5rem;
-  height: 100%;
+
   @media screen and (min-width: 768px) {
     width: 689px;
   }

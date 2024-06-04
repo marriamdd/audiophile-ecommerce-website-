@@ -142,7 +142,7 @@ const ThanksStyles = styled.div`
   }
   .grandTotalDiv {
     width: 26.3rem;
-    height: 9.2rem;
+    height: auto;
 
     border-radius: 0px 0px 8px 8px;
     background: #000;
@@ -154,7 +154,7 @@ const ThanksStyles = styled.div`
     @media screen and (min-width: 768px) {
       width: 19.8rem;
       margin-top: 0rem;
-      height: 100%;
+
       border-radius: 0px 8px 8px 0px;
       padding-left: 3rem;
       padding-top: 4rem;

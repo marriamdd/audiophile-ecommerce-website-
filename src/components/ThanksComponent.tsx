@@ -101,16 +101,14 @@ const BlurDiv = styled.div`
 const ItemDiv = styled.div<{ index: number; showHoleCart: boolean }>`
   display: ${(props) => (props.index == 0 ? "flex" : "none")};
   display: ${(props) => props.showHoleCart && "flex"};
-  width: 198px;
-
+  width: 19.8rem;
   gap: 2rem;
   flex-shrink: 0;
   transition: display 2s ease;
 `;
 const ThanksStyles = styled.div`
-  width: 327px;
+  width: 32.7rem;
   top: 5rem;
-  /* left: 2rem; */
   position: absolute;
   z-index: 99999999;
   display: flex;
@@ -118,7 +116,6 @@ const ThanksStyles = styled.div`
   align-items: center;
   gap: 2rem;
   padding-block: 3rem;
-  /* padding-right: 3rem;  */
   justify-content: center;
   border-radius: 8px;
   background: #fff;
@@ -131,13 +128,10 @@ const ThanksStyles = styled.div`
     padding-top: 3rem;
     padding-bottom: 2rem;
     padding-right: 2rem;
-    width: 263px;
+    width: 26.3rem;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    @media screen and (min-width: 768px) {
-      /* width: 444px; */
-    }
   }
   .contentSideBySide {
     height: 100%;
@@ -147,8 +141,8 @@ const ThanksStyles = styled.div`
     }
   }
   .grandTotalDiv {
-    width: 263px;
-    height: 92px;
+    width: 26.3rem;
+    height: 9.2rem;
 
     border-radius: 0px 0px 8px 8px;
     background: #000;
@@ -158,7 +152,7 @@ const ThanksStyles = styled.div`
     padding-left: 2rem;
     padding-top: 2rem;
     @media screen and (min-width: 768px) {
-      width: 198px;
+      width: 19.8rem;
       margin-top: 0rem;
       height: 100%;
       border-radius: 0px 8px 8px 0px;
@@ -167,14 +161,14 @@ const ThanksStyles = styled.div`
     }
     h3 {
       color: #fff;
-      font-size: 15px;
+      font-size: 1.5rem;
       font-weight: 400;
       line-height: 25px;
       opacity: 0.5;
     }
     span {
       color: #fff;
-      font-size: 18px;
+      font-size: 1.8rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -182,7 +176,7 @@ const ThanksStyles = styled.div`
   .otherItemsLeft {
     align-self: center;
     color: #000;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: 700;
     letter-spacing: -0.214px;
     padding-block: 2rem;
@@ -213,8 +207,8 @@ const ThanksStyles = styled.div`
   }
   button {
     border: none;
-    width: 263px;
-    height: 48px;
+    width: 26.3rem;
+    height: 4.8rem;
     background: #d87d4a;
     color: #fff;
     text-align: center;
@@ -228,16 +222,16 @@ const ThanksStyles = styled.div`
   }
   & > img {
     align-self: flex-start;
-    width: 64px;
-    height: 64px;
+    width: 6.4rem;
+    height: 6.4rem;
     margin-left: 3rem;
   }
   h2 {
     color: #000;
-    width: 263px;
-    font-size: 24px;
+    width: 26.3rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    line-height: 28px;
+    line-height: 2.8rem;
     letter-spacing: 0.857px;
     text-transform: uppercase;
     @media screen and (min-width: 768px) {
@@ -248,14 +242,14 @@ const ThanksStyles = styled.div`
   p {
     color: #000;
     font-family: Manrope;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 400;
-    line-height: 25px;
+    line-height: 2.5rem;
     opacity: 0.5;
-    width: 263px;
+    width: 26.3rem;
     @media screen and (min-width: 768px) {
-      width: 444px;
+      width: 44.4rem;
     }
   }
 `;

@@ -54,15 +54,15 @@ const MayAlsoLikeContainer = styled.div`
     color: #000;
     text-align: center;
     font-family: Manrope;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 36px;
+    line-height: 3.6rem;
     letter-spacing: 0.857px;
     text-transform: uppercase;
     margin-bottom: 4rem;
     @media screen and (min-width: 768px) {
-      font-size: 32px;
+      font-size: 3.2rem;
       letter-spacing: 1.143px;
     }
   }
@@ -94,12 +94,12 @@ const MayAlsoLikeContainer = styled.div`
     }
   }
   button {
-    width: 160px;
-    height: 48px;
+    width: 16rem;
+    height: 4.8rem;
     color: #fff;
     background: #d87d4a;
     border: none;
-    font-size: 13px;
+    font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;

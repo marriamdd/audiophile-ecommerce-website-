@@ -59,15 +59,15 @@ const ZX9SpeakerCartContainer = styled.div`
   background-color: #d87d4a;
   margin-bottom: 5rem;
   @media screen and (min-width: 768px) {
-    height: 720px;
-    width: 689px;
+    height: 72rem;
+    width: 68.9rem;
 
     background-position: top -180px right -30px;
   }
   @media screen and (min-width: 1440px) {
     flex-direction: row;
-    width: 1110px;
-    height: 560px;
+    width: 111rem;
+    height: 56rem;
     background-position: top -180px right 240px;
   }
   picture {
@@ -97,31 +97,31 @@ const ZX9SpeakerCartContainer = styled.div`
   h2 {
     color: #fff;
     text-align: center;
-    width: 280px;
-    font-size: 36px;
+    width: 28rem;
+    font-size: 3.6rem;
     font-weight: 700;
-    line-height: 40px;
+    line-height: 4rem;
     letter-spacing: 1.286px;
     text-transform: uppercase;
     @media screen and (min-width: 768px) {
-      font-size: 56px;
-      line-height: 58px;
+      font-size: 5.6rem;
+      line-height: 5.8rem;
       letter-spacing: 2px;
     }
     @media screen and (min-width: 1440px) {
       text-align: start;
-      width: 349px;
+      width: 34.9rem;
     }
   }
 
   p {
     color: #fff;
     text-align: center;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 400;
-    line-height: 25px;
+    line-height: 2.5rem;
     @media screen and (min-width: 768px) {
-      width: 349px;
+      width: 34.9rem;
     }
     @media screen and (min-width: 1440px) {
       text-align: start;

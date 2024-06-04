@@ -27,7 +27,7 @@ const RenderCategories = ({ category }: { category: string }) => {
                 srcSet={item.categoryImage.desktop}
               />
               <source
-                width={"689px"}
+                max-width={"100%"}
                 height={"352px"}
                 media="(min-width:768px)"
                 srcSet={item.categoryImage.tablet}
@@ -42,7 +42,7 @@ const RenderCategories = ({ category }: { category: string }) => {
             </Picture>
             <Context index={index}>
               {item.new ? <h3>NEW PRODUCT</h3> : null}
-              <h2>{item.slug}</h2>
+              <h2>{item.name}</h2>
               <p>{item.description}</p>
               <SeeProductComponent
                 to={`/single/${item.name}`}
@@ -71,20 +71,20 @@ const CategoryContainer = styled.div`
   }
   .categoryTitle {
     display: flex;
-    height: 102px;
+    height: 10.2rem;
     align-items: center;
     justify-content: center;
     background: #000;
     & > h2 {
       color: #fff;
       text-align: center;
-      font-size: 28px;
+      font-size: 2.8rem;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
       @media screen and (min-width: 768px) {
-        font-size: 40px;
-        line-height: 44px;
+        font-size: 4rem;
+        line-height: 4.4rem;
         letter-spacing: 1.429px;
       }
     }
@@ -92,7 +92,7 @@ const CategoryContainer = styled.div`
 `;
 const Picture = styled.picture<{ index: number }>`
   @media screen and (min-width: 1440px) {
-    order: ${(props) => (props.index % 2 == 0 ? "2" : "1")};
+    order: ${(props) => (props.index % 2 == 0 ? "1" : "2")};
   }
   img {
     border-radius: 8px;
@@ -102,8 +102,8 @@ const Picture = styled.picture<{ index: number }>`
 `;
 const Context = styled.div<{ index: number }>`
   @media screen and (min-width: 1440px) {
-    width: 540px;
-    height: 560px;
+    width: 54rem;
+    height: 56rem;
     display: flex;
     flex-direction: column;
     gap: 4rem;
@@ -141,20 +141,21 @@ const CategoryItemDiv = styled.div`
     text-transform: uppercase;
     padding-block: 2.4rem;
     @media screen and (min-width: 1440px) {
-      font-size: 40px;
+      font-size: 4rem;
+      text-align: start;
     }
   }
   p {
-    width: 327px;
+    width: 32.7rem;
     font-size: 1.5rem;
     font-weight: 400;
     line-height: 2.5rem;
     padding-bottom: 2.4rem;
     @media screen and (min-width: 768px) {
-      width: 572px;
+      width: 57.2rem;
     }
     @media screen and (min-width: 1440px) {
-      width: 445px;
+      width: 44.5rem;
       text-align: start;
     }
   }

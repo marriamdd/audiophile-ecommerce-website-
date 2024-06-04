@@ -53,12 +53,12 @@ export const CartItemsStyles = styled.div`
   gap: 2rem;
   align-items: center;
   margin-bottom: 1rem;
-  width: 256px;
+  width: 25.6rem;
   @media screen and (min-width: 768px) {
-    width: 623px;
+    width: 62.3rem;
   }
   @media screen and (min-width: 1440px) {
-    width: 330px;
+    width: 33rem;
   }
   .price_name {
     display: flex;
@@ -71,28 +71,28 @@ export const CartItemsStyles = styled.div`
     border: none;
     color: #000;
     text-align: right;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-weight: 700;
-    line-height: 25px;
+    line-height: 2.5rem;
     opacity: 0.5;
     margin-left: auto;
     align-self: center;
   }
   img {
     border-radius: 8px;
-    width: 64px;
-    height: 64px;
+    width: 6.4rem;
+    height: 6.4rem;
   }
   span {
     color: #000;
     text-align: right;
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
     text-transform: uppercase;
   }
   .itemPrice {
     color: #000;
-    font-size: 14px;
+    font-size: 1.4rem;
     opacity: 0.5;
     font-weight: 700;
     line-height: 25px; /* 178.571% */
@@ -115,7 +115,7 @@ const SummaryStyles = styled.div`
     width: 689px;
   }
   @media screen and (min-width: 1440px) {
-    width: 380px;
+    width: 38rem;
     margin-top: 2rem;
 
     flex-shrink: 0;
@@ -129,17 +129,17 @@ const SummaryStyles = styled.div`
   }
 
   .pricesContainer {
-    width: 279px;
+    width: 27.9rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 3rem 1rem 2rem;
     gap: 1rem;
     @media screen and (min-width: 768px) {
-      width: 623px;
+      width: 62.3rem;
     }
     @media screen and (min-width: 1440px) {
-      width: 350px;
+      width: 35rem;
     }
     div {
       width: 100%;
@@ -149,15 +149,15 @@ const SummaryStyles = styled.div`
     h3 {
       color: #000;
       opacity: 0.5;
-      font-size: 15px;
+      font-size: 1.5rem;
       font-style: normal;
       font-weight: 400;
-      line-height: 25px;
+      line-height: 2.5rem;
     }
     span {
       color: #000;
       text-align: right;
-      font-size: 17px;
+      font-size: 1.7rem;
       font-weight: 700;
       text-transform: uppercase;
     }
@@ -165,12 +165,12 @@ const SummaryStyles = styled.div`
 `;
 const Continue_pay = styled.input`
   margin-top: 2rem;
-  width: 279px;
-  height: 48px;
+  width: 27.9rem;
+  height: 4.8rem;
   background: #d87d4a;
   color: #fff;
   text-align: center;
-  font-size: 13px;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: 1px;
   border: none;

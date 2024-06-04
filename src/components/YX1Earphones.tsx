@@ -48,7 +48,7 @@ const YX1EarphonesStyles = styled.div`
     flex-direction: row;
   }
   @media screen and (min-width: 1440px) {
-    width: 1110px;
+    width: 111rem;
     margin-top: 4rem;
     margin-bottom: 10rem;
     transition: margin-top 1s ease, margin-bottom 1s ease;
@@ -56,13 +56,13 @@ const YX1EarphonesStyles = styled.div`
   h2 {
     color: #000;
 
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
     @media screen and (min-width: 1440px) {
       font-size: 4rem;
-      line-height: 44px;
+      line-height: 4.4rem;
       letter-spacing: 1.429px;
     }
   }
@@ -73,8 +73,8 @@ const YX1EarphonesStyles = styled.div`
   }
 
   .context {
-    width: 327px;
-    height: 200px;
+    width: 32.7rem;
+    height: 20rem;
     border-radius: 8px;
     background: #f1f1f1;
     display: flex;
@@ -84,12 +84,12 @@ const YX1EarphonesStyles = styled.div`
     gap: 3rem;
     transition: gap 1s ease;
     @media screen and (min-width: 768px) {
-      width: 339px;
-      height: 320px;
+      width: 33.9rem;
+      height: 32rem;
     }
     @media screen and (min-width: 1440px) {
-      width: 540px;
-      height: 320px;
+      width: 54rem;
+      height: 32rem;
       align-items: start;
       padding-left: 7rem;
       gap: 5rem;

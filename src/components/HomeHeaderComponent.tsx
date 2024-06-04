@@ -24,9 +24,11 @@ export default function HomeHeaderComponent() {
 }
 const HomeHeader = styled.div`
   background-image: url(assets/home/mobile/image-header.jpg);
-  background-position: 0px -80px;
+
+  background-blend-mode: multiply;
+  background-size: 100% 100%;
+  background-position: center -90px;
   background-repeat: no-repeat;
-  background-size: cover;
   height: 60rem;
   display: flex;
   width: 100%;
@@ -34,13 +36,11 @@ const HomeHeader = styled.div`
   justify-content: center;
   @media screen and (min-width: 768px) {
     background-image: url(/assets/home/tablet/image-header.jpg);
-    width: 100%;
-    background-position: 0px -110px;
-    transition: background-position 1s;
+
     margin-bottom: 4rem;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1000px) {
     justify-content: start;
     padding-left: 12rem;
     background-image: url(/assets/home/desktop/image-hero.jpg);

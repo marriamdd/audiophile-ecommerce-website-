@@ -69,17 +69,17 @@ const CategoriesStyles = styled.div<{ height: string; width: string }>`
     gap: 1.7rem;
     padding-top: 4rem;
     @media screen and (min-width: 768px) {
-      width: 223px;
-      height: 165px;
+      width: 22.3rem;
+      height: 16.5rem;
     }
     @media screen and (min-width: 1440px) {
-      width: 350px;
-      height: 204px;
+      width: 35rem;
+      height: 20.4rem;
       flex-shrink: 0;
     }
     .arrow {
-      width: 5px;
-      height: 10px;
+      width: 0.5rem;
+      height: 1rem;
       padding-top: 0.2rem;
       align-items: center;
     }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CartIContainer = styled.div`
   display: flex;
-  width: 327px;
+  width: 32.7rem;
   right: 2rem;
 
   top: 9rem;
@@ -10,14 +10,14 @@ export const CartIContainer = styled.div`
   border-radius: 8px;
   flex-direction: column;
   z-index: 9999999999;
-  position: absolute;
+  position: fixed;
   gap: 3rem;
   background: #fff;
   justify-content: center;
   align-items: center;
   padding-bottom: 3rem;
   @media screen and (min-width: 768px) {
-    width: 377px;
+    width: 37.7rem;
   }
   @media screen and (min-width: 1440px) {
     right: 5rem;
@@ -26,7 +26,7 @@ export const CartIContainer = styled.div`
   .cartHeader {
     display: flex;
 
-    width: 271px;
+    width: 27.1rem;
 
     justify-content: space-between;
 
@@ -36,16 +36,16 @@ export const CartIContainer = styled.div`
     }
     & > h2 {
       color: #000;
-      font-size: 18px;
+      font-size: 1.8rem;
       font-weight: 700;
       letter-spacing: 1.286px;
     }
     & > span {
       color: #000;
-      font-size: 15px;
+      font-size: 1.5rem;
       opacity: 0.5;
       font-weight: 400;
-      line-height: 25px;
+      line-height: 2.5rem;
       text-decoration-line: underline;
       cursor: pointer;
     }
@@ -54,14 +54,14 @@ export const CartIContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
-    width: 295px;
+    width: 29.5rem;
     @media screen and (min-width: 768px) {
-      width: 313px;
+      width: 31.3rem;
       gap: 2rem;
     }
     img {
-      width: 64px;
-      height: 64px;
+      width: 6.4rem;
+      height: 6.4rem;
       border-radius: 8px;
     }
     .price_name_div {
@@ -69,17 +69,17 @@ export const CartIContainer = styled.div`
       flex-direction: column;
       h3 {
         color: #000;
-        font-size: 15px;
+        font-size: 1.5rem;
         font-weight: 700;
-        line-height: 25px;
+        line-height: 2.5rem;
       }
       span {
         color: #000;
 
-        font-size: 14px;
+        font-size: 1.4rem;
         opacity: 0.5;
         font-weight: 700;
-        line-height: 25px;
+        line-height: 2.5rem;
       }
     }
   }
@@ -91,14 +91,14 @@ export const CartIContainer = styled.div`
   }
   .countContainer input {
     border: none;
-    width: 96px;
-    height: 32px;
+    width: 9.6rem;
+    height: 3.2rem;
     background: #f1f1f1;
     text-align: center;
   }
   span {
     color: #000;
-    font-size: 13px;
+    font-size: 1.3rem;
     opacity: 0.25;
     font-weight: 700;
   }
@@ -106,7 +106,7 @@ export const CartIContainer = styled.div`
     position: absolute;
     left: 0rem;
     text-align: center;
-    width: 40px;
+    width: 4rem;
     cursor: pointer;
   }
   .plus {

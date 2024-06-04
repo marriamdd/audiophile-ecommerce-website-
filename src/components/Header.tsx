@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { Audiophile_Context } from "../App";
 import CategoriesContainerComponent from "./CategoriesContainerComponent";
 function Header() {
-  const { menuButton, setMenuButton, setShowCart } =
+  const { menuButton, setMenuButton, setShowCart, cartItems } =
     useContext(Audiophile_Context);
 
   const UseDesktopFunc = () => {
@@ -51,12 +51,17 @@ function Header() {
           <Link to="/Speakers">Speakers</Link>
           <Link to="/EarPhones">EarPhones</Link>
         </nav>
-        <img
-          onClick={() => setShowCart((prev) => !prev)}
-          className="cart_icon"
-          src="/assets/shared/desktop/icon-cart.svg"
-          alt="cart_icon"
-        />
+        <div className="cart_icon_Div">
+          <img
+            onClick={() => setShowCart((prev) => !prev)}
+            className="cart_icon"
+            src="/assets/shared/desktop/icon-cart.svg"
+            alt="cart_icon"
+          />
+          {cartItems.length > 0 && (
+            <div className="countCircle">{cartItems.length}</div>
+          )}
+        </div>
       </StyledHeader>
 
       {menuButton && (
@@ -95,9 +100,31 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   transition: justify-content 1s ease;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.2);
+  @media screen and (min-width: 768px) {
+    padding-inline: 4rem;
+    transition: padding-inline 1s ease-in-out;
+  }
   @media screen and (min-width: 1440px) {
     justify-content: space-around;
     transition: justify-content 1s ease;
+  }
+  .cart_icon_Div {
+    position: relative;
+    .countCircle {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      background-color: rgb(216, 125, 74);
+      color: white;
+      font-size: 10px;
+      text-align: center;
+      align-items: center;
+
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      border-radius: 100%;
+    }
   }
   & > img {
     width: 16px;
